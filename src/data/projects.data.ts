@@ -3,6 +3,7 @@ import inventorysystem from "../images/InventoryPage.png";
 import chataisystem from "../images/ConversationLuke.png";
 import moviessystem from "../images/Movies.png";
 import inredtelecom from "../images/Inredtelecom/01HomePage.png";
+import landingPageMartha from "../images/LandingPageMartha/01HomePage.png";
 import { importProjectImages } from "../helper/importProjectImages";
 import type { Project } from "../components/Projects/types";
 
@@ -55,6 +56,16 @@ export const projects: Project[] = [
     gallery: importProjectImages("Inredtelecom"),
     githubUrl: "https://github.com/Al148506/Inredtelecom",
     liveUrl: "https://inredtelecom.vercel.app/",
+    technologies: ["React", "Typescript", "Vite", "Vercel"],
+  },
+  {
+    id: "martha-garcia-portfolio",
+    titleKey: "projectsSection.martha-garcia-portfolio.title",
+    descriptionKey: "projectsSection.martha-garcia-portfolio.description",
+    image: landingPageMartha,
+    gallery: importProjectImages("LandingPageMartha"),
+    githubUrl: "https://github.com/Al148506/portfolio-martha",
+    liveUrl: "https://portfolio-martha.vercel.app/",
     technologies: ["React", "Typescript", "Vite", "Vercel"],
   },
 ];

@@ -106,6 +106,13 @@
       "challenges": "Estructurar una arquitectura basada en componentes reutilizables en React manteniendo una interfaz limpia, organizada y responsiva. También fue un reto organizar secciones como servicios, galería, testimonios y contacto de forma clara para mejorar la experiencia del usuario.",
       "learning": "Fortalecí mis habilidades en el desarrollo de interfaces responsivas con React, en la creación de componentes reutilizables, en la optimización de proyectos con Vite y en el diseño de landing pages enfocadas en comunicación clara y conversión de usuarios."
     },
+    "martha-garcia-portfolio": {
+      "title": "Martha Alicia García Luque — Portafolio Freelance",
+      "description": "Sitio web de portafolio personal desarrollado con React, Vite y TypeScript, desplegado en Vercel.",
+      "objective": "Diseñar y desarrollar un sitio web profesional para una diseñadora gráfica freelance, con el fin de mostrar su trabajo, presentar sus servicios y ofrecer canales de contacto claros para la captación de nuevos clientes.",
+      "challenges": "Traducir la identidad visual de una diseñadora gráfica en una interfaz web coherente y profesional. Estructurar el contenido para destacar el portafolio y los servicios de la cliente, manteniendo un diseño limpio, rápido y completamente responsivo en todos los dispositivos.",
+      "learning": "Se fortalecieron las habilidades en la construcción de interfaces basadas en componentes con React y TypeScript, la organización de proyectos con Vite, y el diseño de sitios orientados al cliente con enfoque en presentación visual y conversión para profesionales freelance."
+    },
     "modalLabels": {
       "objective": "Objetivo",
       "technologies": "Tecnologías",

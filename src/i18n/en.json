@@ -106,6 +106,13 @@
       "challenges": "Structuring a scalable component-based architecture in React while keeping the interface clean and responsive. Another challenge was organizing content sections such as services, gallery, testimonials, and contact in a way that improves usability and user engagement.",
       "learning": "Improved skills in building responsive React interfaces, structuring reusable components, optimizing a Vite-based project, and designing landing pages focused on clear communication and conversion."
     },
+    "martha-garcia-portfolio": {
+      "title": "Martha Alicia García Luque — Freelance Portfolio",
+      "description": "Personal portfolio website developed with React, Vite, and TypeScript, deployed on Vercel.",
+      "objective": "Design and develop a professional portfolio site for a freelance graphic designer to showcase her work, present her services, and provide clear contact channels to attract potential clients.",
+      "challenges": "Translating a graphic designer's visual identity into a web interface that feels cohesive and professional. Structuring the content to highlight the designer's portfolio and services while keeping the layout clean, fast, and fully responsive across all devices.",
+      "learning": "Strengthened skills in building component-based interfaces with React and TypeScript, managing project structure in a Vite environment, and designing client-facing sites focused on visual presentation and conversion for freelance professionals."
+    },
     "modalLabels": {
       "objective": "Objective",
       "technologies": "Technologies",
