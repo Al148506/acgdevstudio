@@ -21,13 +21,47 @@
 
 .modal-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1.2rem;
+  top: 12px;
+  right: 12px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  background: rgba(120, 20, 20, 0.82);
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1;
   z-index: 10;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(239, 68, 68, 0.95);
+  color: #fff;
+  transform: scale(1.08) rotate(90deg);
+  box-shadow:
+    0 10px 24px rgba(239, 68, 68, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.modal-close:active {
+  transform: scale(0.96);
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid rgba(239, 68, 68, 0.9);
+  outline-offset: 3px;
 }
 
 .modal-image-wrapper {
@@ -45,7 +79,7 @@
 .modal-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   display: flex;
   align-items: flex-end;
   padding: 20px;
@@ -71,8 +105,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {

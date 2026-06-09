@@ -3,7 +3,8 @@ import inventorysystem from "../images/InventoryPage.png";
 import chataisystem from "../images/ConversationLuke.png";
 import moviessystem from "../images/Movies.png";
 import inredtelecom from "../images/Inredtelecom/01HomePage.png"
-
+import landingPageMartha from "../images/LandingPageMartha/01HomePage.png";
+import pomodoroSempai from "../images/Pomodoro.png";
 export interface ProjectModalData {
   id: string;
   titleKey: string;
@@ -94,5 +95,35 @@ export const projectsModalData: ProjectModalData[] = [
 
     challengesKey: "projectsSection.inredtelecom.challenges",
     learningKey: "projectsSection.inredtelecom.learning",
+  },
+  {
+    id: "martha-garcia-portfolio",
+    titleKey: "projectsSection.martha-garcia-portfolio.title",
+    image: landingPageMartha,
+    objectiveKey: "projectsSection.martha-garcia-portfolio.objective",
+    technologies: [
+      "React",
+      "Vite",
+      "CSS",
+      "Vercel",
+    ],
+
+    challengesKey: "projectsSection.martha-garcia-portfolio.challenges",
+    learningKey: "projectsSection.martha-garcia-portfolio.learning",
+  },
+  {
+    id: "kawaii-task-planner",
+    titleKey: "projectsSection.kawaii-task-planner.title",
+    image: pomodoroSempai,
+    objectiveKey: "projectsSection.kawaii-task-planner.objective",
+    technologies: [
+      "React",
+      "Vite",
+      "CSS",
+      "Vercel",
+    ],
+
+    challengesKey: "projectsSection.kawaii-task-planner.challenges",
+    learningKey: "projectsSection.kawaii-task-planner.learning",
   }
 ];

@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "portafolio-react-acg"
-  }
+  },
+  "targets": {
+    "portafolio-react-acg": {
+      "hosting": {
+        "main": [
+          "acgdev"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

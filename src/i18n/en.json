@@ -113,6 +113,13 @@
       "challenges": "Translating a graphic designer's visual identity into a web interface that feels cohesive and professional. Structuring the content to highlight the designer's portfolio and services while keeping the layout clean, fast, and fully responsive across all devices.",
       "learning": "Strengthened skills in building component-based interfaces with React and TypeScript, managing project structure in a Vite environment, and designing client-facing sites focused on visual presentation and conversion for freelance professionals."
     },
+    "kawaii-task-planner": {
+      "title": "Kawaii Task Planner — Anime RPG Pomodoro",
+      "description": "A gamified productivity platform built with React, TypeScript, and Vite that combines task management, Pomodoro sessions, RPG progression mechanics, and anime-inspired virtual companions.",
+      "objective": "To create an engaging productivity tool that helps users build focus and consistency through task planning, time management, achievement systems, and interactive feedback.",
+      "challenges": "Developing a feature-rich single-page application with multiple interconnected contexts, implementing a progression system with levels, achievements, and unlockable content, managing persistent client-side data, and designing a cohesive kawaii-themed user interface that remains intuitive and responsive across devices.",
+      "learning": "Gained hands-on experience in designing scalable frontend architectures, managing complex application state with React Context and reducers, implementing gamification systems, optimizing user experience, and deploying production-ready applications with Firebase Hosting."
+    },
     "modalLabels": {
       "objective": "Objective",
       "technologies": "Technologies",

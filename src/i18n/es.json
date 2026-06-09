@@ -113,6 +113,13 @@
       "challenges": "Traducir la identidad visual de una diseñadora gráfica en una interfaz web coherente y profesional. Estructurar el contenido para destacar el portafolio y los servicios de la cliente, manteniendo un diseño limpio, rápido y completamente responsivo en todos los dispositivos.",
       "learning": "Se fortalecieron las habilidades en la construcción de interfaces basadas en componentes con React y TypeScript, la organización de proyectos con Vite, y el diseño de sitios orientados al cliente con enfoque en presentación visual y conversión para profesionales freelance."
     },
+    "kawaii-task-planner": {
+      "title": "Kawaii Task Planner — Aplicación de Productividad Gamificada",
+      "description": "Aplicación web que transforma la gestión de tareas y la técnica Pomodoro en una experiencia RPG interactiva con progresión, logros y asistentes virtuales estilo anime.",
+      "objective": "Incrementar la motivación y la concentración de los usuarios mediante una experiencia de productividad gamificada que combine organización de tareas, seguimiento del tiempo y recompensas por progreso.",
+      "challenges": "Diseñar una arquitectura escalable basada en React Context para coordinar múltiples módulos (tareas, temporizador, progresión RPG, sesiones y asistentes virtuales), implementar persistencia local sin backend y crear una experiencia visual atractiva manteniendo un rendimiento óptimo.",
+      "learning": "Se fortalecieron habilidades en React, TypeScript, arquitectura frontend modular, gestión compleja de estado, patrones de gamificación, experiencia de usuario, diseño responsivo y despliegue de aplicaciones modernas utilizando Firebase Hosting."
+    },
     "modalLabels": {
       "objective": "Objetivo",
       "technologies": "Tecnologías",
