@@ -1,15 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
 
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Contact Section
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-
 .contact {
   padding: 100px 0 120px;
   font-family: "DM Sans", sans-serif;
+  background-color: #07111d;
 }
 
-/* ── Header ───────────────────────────── */
 .contact-header {
   text-align: center;
   margin-bottom: 56px;
@@ -27,7 +23,6 @@
   padding: 0 20px;
 }
 
-/* Líneas laterales del eyebrow */
 .contact-eyebrow::before,
 .contact-eyebrow::after {
   content: "";
@@ -56,9 +51,11 @@
   line-height: 1.8;
   color: rgba(194, 211, 232, 0.7);
   margin: 0;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ── Card ─────────────────────────────── */
 .contact-card {
   position: relative;
   max-width: 680px;
@@ -73,7 +70,6 @@
   overflow: hidden;
 }
 
-/* Glow decorativo en la esquina superior izquierda */
 .contact-card__glow {
   position: absolute;
   top: -80px;
@@ -84,7 +80,6 @@
   pointer-events: none;
 }
 
-/* ── Form layout ──────────────────────── */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -99,7 +94,6 @@
   gap: 18px;
 }
 
-/* ── Field ────────────────────────────── */
 .contact-field {
   display: flex;
   flex-direction: column;
@@ -120,7 +114,8 @@
 }
 
 .contact-field input,
-.contact-field textarea {
+.contact-field textarea,
+.contact-field select {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
@@ -137,25 +132,62 @@
   resize: none;
 }
 
+.contact-field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%237a96b4' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.contact-field select option {
+  background: #0d1b2a;
+  color: #f0f6ff;
+}
+
 .contact-field input::placeholder,
 .contact-field textarea::placeholder {
   color: rgba(194, 211, 232, 0.25);
 }
 
 .contact-field input:hover,
-.contact-field textarea:hover {
+.contact-field textarea:hover,
+.contact-field select:hover {
   border-color: rgba(76, 201, 240, 0.2);
   background: rgba(255, 255, 255, 0.055);
 }
 
 .contact-field input:focus,
-.contact-field textarea:focus {
+.contact-field textarea:focus,
+.contact-field select:focus {
   border-color: rgba(76, 201, 240, 0.5);
   background: rgba(76, 201, 240, 0.04);
   box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.08);
 }
 
-/* ── Submit button ────────────────────── */
+.contact-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #25D366;
+  cursor: pointer;
+}
+
+.contact-checkbox label {
+  font-size: 0.875rem;
+  color: rgba(194, 211, 232, 0.7);
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
 .contact-btn {
   align-self: flex-start;
   display: inline-flex;
@@ -197,7 +229,6 @@
   cursor: not-allowed;
 }
 
-/* Spinner */
 .contact-btn__spinner {
   width: 14px;
   height: 14px;
@@ -212,14 +243,12 @@
   to { transform: rotate(360deg); }
 }
 
-/* ── SweetAlert2 custom theme ─────────── */
 .swal-contact-popup {
   border: 1px solid rgba(76, 201, 240, 0.15) !important;
   border-radius: 16px !important;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* ── Responsive ───────────────────────── */
 @media (max-width: 640px) {
   .contact-card {
     padding: 32px 24px;

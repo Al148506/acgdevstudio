@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
+
+.benefits-section {
+  background-color: #07111d;
+  padding: 7rem 2rem;
+  position: relative;
+  overflow: hidden;
+  font-family: "DM Sans", sans-serif;
+}
+
+.benefits-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 5% 35%, rgba(76, 201, 240, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 40% at 95% 65%, rgba(67, 97, 238, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.benefits-header {
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.benefits-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #4cc9f0;
+  margin-bottom: 14px;
+  position: relative;
+  padding: 0 20px;
+}
+
+.benefits-eyebrow::before,
+.benefits-eyebrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 36px;
+  height: 1px;
+  background: rgba(76, 201, 240, 0.4);
+}
+.benefits-eyebrow::before { right: 100%; margin-right: -20px; }
+.benefits-eyebrow::after  { left: 100%;  margin-left: -20px; }
+
+.benefits-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #f0f6ff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.benefits-title span {
+  background: linear-gradient(110deg, #4cc9f0, #4361ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.benefit-card {
+  text-align: center;
+  padding: 40px 28px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(76, 201, 240, 0.08);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(76, 201, 240, 0.2);
+  background: rgba(76, 201, 240, 0.03);
+}
+
+.benefit-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin: 0 auto 20px;
+  background: rgba(76, 201, 240, 0.08);
+  color: #4cc9f0;
+}
+
+.benefit-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f0f6ff;
+  margin: 0 0 12px;
+}
+
+.benefit-desc {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: rgba(194, 211, 232, 0.65);
+  margin: 0;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+  }
+}

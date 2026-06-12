@@ -1,7 +1,7 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import "./Contact.css";
 
 export const Contact = () => {
@@ -9,14 +9,21 @@ export const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
+    business: "",
+    service: "",
     message: "",
+    whatsapp: false,
   });
   const [sending, setSending] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const value = e.target.type === "checkbox"
+      ? (e.target as HTMLInputElement).checked
+      : e.target.value;
+    setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -27,7 +34,7 @@ export const Contact = () => {
       .send(
         import.meta.env.VITE_EMAIL_SERVICE,
         import.meta.env.VITE_EMAIL_TEMPLATE,
-        formData,
+        { ...formData, whatsapp: formData.whatsapp ? "Sí" : "No" },
         import.meta.env.VITE_EMAIL_PUBLIC_KEY,
       )
       .then(() => {
@@ -45,7 +52,7 @@ export const Contact = () => {
             title: "swal-contact-title",
           },
         });
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", business: "", service: "", message: "", whatsapp: false });
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -74,16 +81,12 @@ export const Contact = () => {
           <span className="contact-eyebrow">{t('contact.eyebrow')}</span>
           <h2 className="contact-title">{t('contact.title')}</h2>
           <p className="contact-subtitle">
-            <Trans i18nKey="contact.subtitle" components={{ 1: <br /> }}>
-              Have a project in mind or just want to say hello?<br />
-              My inbox is always open.
-            </Trans>
+            Cuéntanos sobre tu negocio y te enviaremos una cotización personalizada en 24 horas.
           </p>
         </div>
 
         <div className="contact-card">
 
-          {/* Decorative glow */}
           <div className="contact-card__glow" />
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
@@ -118,17 +121,71 @@ export const Contact = () => {
               </div>
             </div>
 
+            <div className="contact-row">
+              <div className="contact-field">
+                <label htmlFor="phone">Teléfono</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  placeholder="+52 555 123 4567"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  autoComplete="tel"
+                />
+              </div>
+
+              <div className="contact-field">
+                <label htmlFor="business">Nombre del negocio</label>
+                <input
+                  id="business"
+                  type="text"
+                  name="business"
+                  placeholder="Nombre de tu negocio"
+                  value={formData.business}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div className="contact-field">
+              <label htmlFor="service">Servicio que te interesa</label>
+              <select
+                id="service"
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+              >
+                <option value="">Selecciona un servicio</option>
+                <option value="corporate">Sitio web corporativo</option>
+                <option value="landing">Landing page</option>
+                <option value="catalog">Catálogo / menú digital</option>
+                <option value="redesign">Rediseño de sitio web</option>
+                <option value="other">Otro</option>
+              </select>
+            </div>
+
             <div className="contact-field">
               <label htmlFor="message">{t('contact.messageLabel')}</label>
               <textarea
                 id="message"
                 name="message"
                 placeholder={t('contact.messagePlaceholder')}
-                rows={5}
+                rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                required
               />
+            </div>
+
+            <div className="contact-checkbox">
+              <input
+                type="checkbox"
+                id="whatsapp"
+                name="whatsapp"
+                checked={formData.whatsapp}
+                onChange={handleChange}
+              />
+              <label htmlFor="whatsapp">¿Prefieres que te contactemos por WhatsApp?</label>
             </div>
 
             <button
@@ -143,7 +200,7 @@ export const Contact = () => {
                 </>
               ) : (
                 <>
-                  {t('contact.sendButton')}
+                  Recibe tu cotización en 24 horas
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>

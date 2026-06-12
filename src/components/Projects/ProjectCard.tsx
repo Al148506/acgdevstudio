@@ -16,13 +16,11 @@ export const ProjectCard = ({ project, onMoreDetails }: Props) => {
   return (
     <>
       <div className="showcase-card">
-        {/* IMAGE */}
         <div className="showcase-image" onClick={() => setOpenGallery(true)}>
           <img src={project.image} alt={t(project.titleKey)} />
           <div className="showcase-image-overlay" />
         </div>
 
-        {/* CONTENT */}
         <div className="showcase-content">
           <span className="showcase-index">{t('projectsSection.label')}</span>
 
@@ -33,25 +31,17 @@ export const ProjectCard = ({ project, onMoreDetails }: Props) => {
           <div className="showcase-divider" />
 
           <section className="project-actions">
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline-light"
-            >
-              <i className="bi bi-github me-2"></i>
-              {t('projectsSection.github')}
-            </a>
-
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
-              <i className="bi bi-box-arrow-up-right me-2"></i>
-              {t('projectsSection.modalLabels.viewProject')}
-            </a>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
+                <i className="bi bi-box-arrow-up-right me-2"></i>
+                {t('projectsSection.modalLabels.viewProject')}
+              </a>
+            )}
           </section>
 
           <div className="showcase-buttons">

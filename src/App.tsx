@@ -1,21 +1,26 @@
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
 import "./styles/global.css";
-import About from "./components/About/About";
+import { Services } from "./components/Services/Services";
+import { Benefits } from "./components/Benefits/Benefits";
 import { Projects } from "./components/Projects/ProjectSection";
-import { TechCarousel } from "./components/Technologies/TechCarousel";
+import { FAQ } from "./components/FAQ/FAQ";
 import { Contact } from "./components/Contact/Contact";
+import { WhatsAppButton } from "./components/WhatsAppButton/WhatsAppButton";
 import Footer from "./components/Footer/Footer";
+
 function App() {
   return (
     <>
       <Navbar />
       <Hero />
-      <About/>
-      <TechCarousel/>
-      <Projects/>
-      <Contact/>
-      <Footer/>
+      <Services />
+      <Benefits />
+      <Projects />
+      <FAQ />
+      <Contact />
+      <WhatsAppButton />
+      <Footer />
     </>
   );
 }

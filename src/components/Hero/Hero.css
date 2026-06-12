@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
-/* ─── Reset & Base ─── */
+
 *,
 *::before,
 *::after {
@@ -18,7 +18,6 @@
   --white: #f0f6ff;
 }
 
-/* ─── Section ─── */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -33,7 +32,6 @@
   font-family: "DM Sans", sans-serif;
 }
 
-/* ─── Grid noise overlay ─── */
 .hero-section::before {
   content: "";
   position: absolute;
@@ -55,7 +53,6 @@
   z-index: 0;
 }
 
-/* ─── Glow orbs ─── */
 .hero-section::after {
   content: "";
   position: absolute;
@@ -73,30 +70,25 @@
   z-index: 0;
 }
 
-/* ─── Wrapper ─── */
 .hero-wrapper {
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
+  justify-content: center;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* ══════════════════════════════
-   LEFT SIDE
-══════════════════════════════ */
 .hero-content {
-  max-width: 580px;
+  max-width: 720px;
+  text-align: center;
   animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Badge / greeting */
-.hero-greeting {
+.hero-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -111,10 +103,9 @@
   border-radius: 100px;
   padding: 0.35rem 0.9rem;
   margin-bottom: 1.5rem;
-  width: fit-content;
 }
 
-.hero-greeting::before {
+.hero-eyebrow::before {
   content: "";
   display: inline-block;
   width: 7px;
@@ -125,14 +116,8 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
-.hero-greeting span {
-  color: var(--white);
-}
-
-/* Main title */
 .hero-title {
   font-family: "Space Grotesk", sans-serif;
-
   font-size: clamp(2.8rem, 5vw, 4.4rem);
   font-weight: 800;
   line-height: 1.05;
@@ -149,23 +134,31 @@
   background-clip: text;
 }
 
-/* Description */
+.hero-title span {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .hero-description {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 300;
   color: var(--text-body);
   line-height: 1.7;
   margin-bottom: 2.5rem;
-  max-width: 420px;
+  max-width: 560px;
   letter-spacing: 0.01em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ─── Buttons ─── */
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
   align-items: center;
+  justify-content: center;
 }
 
 .btn-modern {
@@ -213,135 +206,6 @@
   transform: translateY(-2px);
 }
 
-/* ─── Stats row ─── */
-.hero-stats {
-  display: flex;
-  gap: 2rem;
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.hero-stat-number {
-  font-family: "Syne", sans-serif;
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--white);
-  line-height: 1;
-  margin-bottom: 0.2rem;
-}
-
-.hero-stat-number span {
-  color: var(--accent);
-}
-
-.hero-stat-label {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* ══════════════════════════════
-   RIGHT SIDE
-══════════════════════════════ */
-.hero-visual {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  animation: fadeUp 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* Glow ring behind stack image */
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(76, 201, 240, 0.09) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-.hero-stack {
-  max-width: 480px;
-  width: 100%;
-  filter: drop-shadow(0 0 30px rgba(76, 201, 240, 0.25))
-    drop-shadow(0 20px 60px rgba(7, 17, 29, 0.8));
-  transition: filter 0.4s ease;
-}
-
-.hero-visual:hover .hero-stack {
-  filter: drop-shadow(0 0 45px rgba(76, 201, 240, 0.4))
-    drop-shadow(0 20px 60px rgba(7, 17, 29, 0.8));
-}
-
-/* Profile photo */
-.hero-profile {
-  position: absolute;
-  top: -70px;
-  right: 185px;
-  width: 110px;
-  height: 110px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid var(--bg-mid);
-  outline: 2px solid rgba(76, 201, 240, 0.45);
-  outline-offset: 3px;
-  box-shadow:
-    0 0 0 8px rgba(76, 201, 240, 0.06),
-    0 8px 32px rgba(0, 0, 0, 0.5);
-  transition:
-    outline-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.hero-profile:hover {
-  outline-color: var(--accent);
-  box-shadow:
-    0 0 0 10px rgba(76, 201, 240, 0.1),
-    0 0 30px rgba(76, 201, 240, 0.3),
-    0 8px 32px rgba(0, 0, 0, 0.5);
-}
-
-/* ─── Floating availability badge ─── */
-.hero-available {
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(13, 27, 42, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(76, 201, 240, 0.2);
-  border-radius: 100px;
-  padding: 0.3rem 0.8rem 0.3rem 0.5rem;
-  font-size: 0.72rem;
-  color: var(--text-body);
-  white-space: nowrap;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
-.hero-available-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #3ddba9;
-  box-shadow: 0 0 8px #3ddba9;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-/* ═══════════════
-   ANIMATIONS
-═══════════════ */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -365,47 +229,13 @@
   }
 }
 
-/* ═══════════════
-   RESPONSIVE
-═══════════════ */
 @media (max-width: 900px) {
   .hero-wrapper {
-    flex-direction: column;
-    text-align: center;
     padding-top: 6rem;
     padding-bottom: 4rem;
   }
 
-  .hero-greeting {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .hero-description {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-buttons {
-    justify-content: center;
-  }
-
-  .hero-stats {
-    justify-content: center;
-  }
-
-  .hero-visual {
-    width: 100%;
-  }
-
-  .hero-stack {
-    max-width: 340px;
-  }
-
-  .hero-profile {
-    top: -60px;
-    right: auto;
-    left: 50%;
-    transform: translateX(60px);
+    font-size: 1rem;
   }
 }

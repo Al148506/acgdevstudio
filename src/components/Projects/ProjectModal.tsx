@@ -20,7 +20,6 @@ const ProjectModal = ({ project, onClose }: Props) => {
           <i className="bi bi-x-lg"></i>
         </button>
 
-        {/* Imagen */}
         <div className="modal-image-wrapper">
           <img src={project.image} alt={t(project.titleKey)} />
           <div className="modal-image-overlay">
@@ -28,9 +27,7 @@ const ProjectModal = ({ project, onClose }: Props) => {
           </div>
         </div>
 
-        {/* Contenido */}
         <div className="modal-content-body">
-
           <section>
             <h6><i className="bi bi-bullseye me-2"></i>{t('projectsSection.modalLabels.objective')}</h6>
             <p>{t(project.objectiveKey)}</p>
@@ -46,17 +43,6 @@ const ProjectModal = ({ project, onClose }: Props) => {
               ))}
             </div>
           </section>
-
-          <section>
-            <h6><i className="bi bi-exclamation-triangle me-2"></i>{t('projectsSection.modalLabels.challenges')}</h6>
-            <p>{t(project.challengesKey)}</p>
-          </section>
-
-          <section>
-            <h6><i className="bi bi-graph-up me-2"></i>{t('projectsSection.modalLabels.learning')}</h6>
-            <p>{t(project.learningKey)}</p>
-          </section>
-
         </div>
 
       </div>
