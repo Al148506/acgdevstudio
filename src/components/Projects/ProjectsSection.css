@@ -26,16 +26,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(
-      ellipse 55% 45% at 90% 65%,
-      rgba(52, 211, 153, 0.07) 0%,
-      transparent 70%
-    ),
-    radial-gradient(
-      ellipse 50% 40% at 15% 20%,
-      rgba(129, 140, 248, 0.08) 0%,
-      transparent 60%
-    );
+    radial-gradient(ellipse 55% 45% at 90% 65%, rgba(52, 211, 153, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 15% 20%, rgba(129, 140, 248, 0.08) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -51,7 +43,7 @@
 }
 
 .projects-section .container {
-  max-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 150px;
   position: relative;
@@ -105,29 +97,23 @@
   border-bottom: 1px solid var(--card-border);
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.tech-grid .showcase-card {
+  grid-template-columns: 1fr;
+  min-height: auto;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
 }
 
-.projects-section .section-eyebrow {
-  animation: fadeUp 0.6s ease both;
-}
-.projects-section .section-title {
-  animation: fadeUp 0.6s 0.1s ease both;
-}
-.projects-section .section-description {
-  animation: fadeUp 0.6s 0.2s ease both;
+.tech-grid .showcase-image {
+  height: 240px;
 }
 
-@media (max-width: 640px) {
-  .projects-section {
-    padding: 5rem 0;
+.tech-grid .showcase-card h2 {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .projects-section .container {
+    padding: 0 20px;
   }
 }

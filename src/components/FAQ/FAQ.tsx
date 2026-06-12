@@ -3,33 +3,37 @@ import "./FAQ.css";
 
 const faqData = [
   {
-    q: "¿Cuánto cuesta un sitio web?",
-    a: "El costo depende del tipo de proyecto. Desde una landing page sencilla hasta un sitio web corporativo completo. Contáctanos para una cotización personalizada sin compromiso."
+    q: "¿Cuánto cuesta una página web?",
+    a: "El costo depende del tipo de proyecto: una landing page no es lo mismo que un sitio web corporativo con varias secciones. Te ofrecemos una cotización personalizada sin compromiso para que sepas exactamente lo que necesitas."
   },
   {
-    q: "¿Qué tan rápido puedo tener mi sitio listo?",
-    a: "Dependiendo de la complejidad, podemos tener tu sitio listo en 3 a 10 días hábiles. Las landing pages son más rápidas, los sitios corporativos pueden tomar un poco más."
+    q: "¿Cuánto tiempo tarda el desarrollo?",
+    a: "Entregamos proyectos funcionales en 3 a 10 días hábiles, dependiendo de la complejidad. Las landing pages son más rápidas; los sitios más completos pueden tomar un poco más. Te mantenemos informado en cada etapa."
   },
   {
-    q: "¿Necesito saber de tecnología para administrarlo?",
-    a: "Para nada. Nosotros nos encargamos de todo. Si necesitas actualizar algo, solo nos avisas y lo hacemos por ti. También podemos enseñarte lo básico si prefieres hacerlo tú mismo."
+    q: "¿Necesito dominio y hosting?",
+    a: "Sí, pero no te preocupes. Te asesoramos para elegir el mejor dominio y hosting para tu negocio, y nos encargamos de toda la configuración técnica para que tu sitio esté en línea sin complicaciones."
   },
   {
-    q: "¿El sitio va a funcionar en celulares?",
-    a: "Sí, todos nuestros sitios están optimizados para verse perfectos en celulares, tablets y computadoras. Más del 70% de los usuarios navegan desde su teléfono."
+    q: "¿Mi sitio funcionará en celulares?",
+    a: "Sí, absolutamente. Todos nuestros sitios están optimizados para verse perfectos en celulares, tablets y computadoras. Más del 70% de los usuarios navegan desde su teléfono, por lo que es una prioridad para nosotros."
   },
   {
-    q: "¿Me ayudas con el dominio y el hosting?",
-    a: "Sí, te asesoramos para elegir el mejor dominio y hosting para tu negocio, y nos encargamos de toda la configuración técnica para que tu sitio esté en línea."
+    q: "¿Podré solicitar cambios después de la entrega?",
+    a: "Claro. Ofrecemos soporte continuo después de la entrega. Si necesitas ajustar texto, agregar imágenes o hacer cambios, solo contáctanos y lo resolvemos rápidamente."
   },
   {
-    q: "¿Incluye integración con WhatsApp?",
-    a: "Sí, todos nuestros sitios incluyen un botón de WhatsApp para que tus clientes te contacten directamente desde la página."
+    q: "¿Puedo actualizar el contenido yo mismo?",
+    a: "Sí, si lo deseas podemos configurar un panel sencillo para que administres tu contenido. Y si prefieres no preocuparte por eso, nosotros nos encargamos de las actualizaciones por ti."
   },
   {
-    q: "¿Qué pasa si necesito cambios después?",
-    a: "Ofrecemos soporte continuo. Si necesitas cambios o actualizaciones, solo contáctanos y te apoyamos. No te dejamos solo después de la entrega."
-  }
+    q: "¿Qué información necesito proporcionar?",
+    a: "Básicamente lo que quieras mostrar: imágenes de tu negocio, información de tus servicios o productos, horarios, precios y cualquier detalle que consideres importante para tus clientes. Nosotros te guiamos."
+  },
+  {
+    q: "¿Me ayudan con la publicación del sitio?",
+    a: "Sí, nos encargamos de todo el proceso de publicación. Desde la configuración del dominio y hosting hasta la puesta en línea. Tú solo aprobas el diseño y nosotros hacemos el resto."
+  },
 ];
 
 export const FAQ = () => {

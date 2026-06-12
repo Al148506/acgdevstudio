@@ -146,11 +146,36 @@
   font-weight: 300;
   color: var(--text-body);
   line-height: 1.7;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.8rem;
   max-width: 560px;
   letter-spacing: 0.01em;
   margin-left: auto;
   margin-right: auto;
+}
+
+.hero-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 2.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  justify-content: center;
+  max-width: 500px;
+}
+
+.hero-benefits li {
+  font-size: 0.85rem;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+}
+
+.hero-benefits li i {
+  color: #34d399;
+  font-size: 0.75rem;
 }
 
 .hero-buttons {

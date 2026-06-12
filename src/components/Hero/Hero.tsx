@@ -1,5 +1,12 @@
 import "./Hero.css";
 
+const benefits = [
+  "Diseño profesional",
+  "Optimizado para móviles",
+  "Integración con WhatsApp",
+  "Soporte personalizado",
+];
+
 function Hero() {
   return (
     <section className="hero-section" id="home">
@@ -18,12 +25,20 @@ function Hero() {
             Atrae más clientes con una presencia digital profesional.
           </p>
 
+          <ul className="hero-benefits">
+            {benefits.map((b) => (
+              <li key={b}>
+                <i className="bi bi-check-lg"></i> {b}
+              </li>
+            ))}
+          </ul>
+
           <div className="hero-buttons">
             <a href="#contact" className="btn btn-primary btn-modern">
-              Solicita tu cotización gratuita
+              Solicitar Demo Gratuita
             </a>
             <a href="#portfolio" className="btn btn-outline-light btn-modern">
-              Ver nuestro trabajo
+              Ver Proyectos
             </a>
           </div>
         </div>

@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap");
+
+.process-section {
+  background-color: #07111d;
+  padding: 7rem 2rem;
+  position: relative;
+  font-family: "DM Sans", sans-serif;
+}
+
+.process-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 5% 45%, rgba(76, 201, 240, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 40% at 95% 55%, rgba(67, 97, 238, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.process-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #4cc9f0;
+  margin-bottom: 14px;
+  position: relative;
+  padding: 0 20px;
+}
+
+.process-eyebrow::before,
+.process-eyebrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 36px;
+  height: 1px;
+  background: rgba(76, 201, 240, 0.4);
+}
+.process-eyebrow::before { right: 100%; margin-right: -20px; }
+.process-eyebrow::after  { left: 100%;  margin-left: -20px; }
+
+.process-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #f0f6ff;
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.process-title span {
+  background: linear-gradient(110deg, #4cc9f0, #4361ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.process-subtitle {
+  font-size: 0.95rem;
+  color: rgba(194, 211, 232, 0.65);
+  font-weight: 300;
+  margin: 0;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.process-step {
+  text-align: center;
+  padding: 36px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(76, 201, 240, 0.08);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-4px);
+  border-color: rgba(76, 201, 240, 0.25);
+  background: rgba(76, 201, 240, 0.03);
+}
+
+.step-number {
+  font-family: "Syne", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(76, 201, 240, 0.4);
+  margin-bottom: 16px;
+}
+
+.step-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin: 0 auto 16px;
+  background: rgba(76, 201, 240, 0.08);
+  border: 1px solid rgba(76, 201, 240, 0.15);
+  color: #4cc9f0;
+}
+
+.step-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f0f6ff;
+  margin: 0 0 10px;
+  line-height: 1.3;
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: rgba(194, 211, 232, 0.6);
+  margin: 0;
+  font-weight: 300;
+}
+
+@media (max-width: 900px) {
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .process-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+  }
+}
