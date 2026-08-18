@@ -1,45 +1,71 @@
+import { BrowserFrame } from "../BrowserFrame/BrowserFrame";
+import inredtelecomWork from "../../images/Inredtelecom/03OurWorks.png";
+import marthaPortfolio from "../../images/LandingPageMartha/01HomePage.png";
 import "./Hero.css";
-
-const benefits = [
-  "Diseño profesional",
-  "Optimizado para móviles",
-  "Integración con WhatsApp",
-  "Soporte personalizado",
-];
 
 function Hero() {
   return (
-    <section className="hero-section" id="home">
-      <div className="container hero-wrapper">
-        <div className="hero-content">
-          <p className="hero-eyebrow">ACGDevStudio</p>
+    <section className="hero-section" id="home" aria-labelledby="hero-title">
+      <div className="hero-shell">
+        <div className="hero-copy">
+          <div className="hero-identifier">
+            <span>ACG / Estudio web independiente</span>
+          </div>
 
-          <h1 className="hero-title">
-            Transformamos tu idea
-            <br />
-            en un <span>sitio web profesional</span>
+          <h1 className="hero-title" id="hero-title">
+            Tu negocio merece una web a su altura.
           </h1>
 
           <p className="hero-description">
-            Creamos sitios web modernos para restaurantes, cafeterías, gimnasios y negocios locales.
-            Atrae más clientes con una presencia digital profesional.
+            Creo sitios web profesionales para ayudarte a destacar y conectar con más clientes.
           </p>
 
-          <ul className="hero-benefits">
-            {benefits.map((b) => (
-              <li key={b}>
-                <i className="bi bi-check-lg"></i> {b}
-              </li>
-            ))}
-          </ul>
+          <div className="hero-actions" aria-label="Acciones principales">
+            <a href="#contact" className="hero-button hero-button--primary">
+              Cuéntame tu proyecto <span aria-hidden="true">↗</span>
+            </a>
+            <a href="#portfolio" className="hero-button hero-button--secondary">
+              Ver proyectos <span aria-hidden="true">↓</span>
+            </a>
+          </div>
 
-          <div className="hero-buttons">
-            <a href="#contact" className="btn btn-primary btn-modern">
-              Solicitar Demo Gratuita
-            </a>
-            <a href="#portfolio" className="btn btn-outline-light btn-modern">
-              Ver Proyectos
-            </a>
+          <p className="hero-proposal">
+            <span aria-hidden="true" />
+            Propuesta visual inicial sin compromiso.
+          </p>
+        </div>
+
+        <div className="hero-work" aria-label="Muestra de proyectos realizados">
+          <div className="hero-work__meta" aria-hidden="true">
+            <span>ACG / 01</span>
+            <span>TRABAJO SELECCIONADO</span>
+          </div>
+
+          <div className="hero-work__frames">
+            <BrowserFrame
+              className="hero-work__primary"
+              src={marthaPortfolio}
+              alt="Página principal del portafolio web desarrollado para la diseñadora Martha García"
+              title="Martha García · Portfolio"
+              url="portfolio-martha.vercel.app"
+              loading="eager"
+            />
+
+            <BrowserFrame
+              className="hero-work__secondary"
+              src={inredtelecomWork}
+              alt="Galería de trabajos del sitio corporativo desarrollado para Inredtelecom"
+              title="Inredtelecom · Sitio corporativo"
+              url="inredtelecom.vercel.app"
+              variant="compact"
+              loading="eager"
+            />
+          </div>
+
+          <div className="hero-work__note" aria-hidden="true">
+            <span>Diseño</span>
+            <span>Desarrollo</span>
+            <span>Responsive</span>
           </div>
         </div>
       </div>

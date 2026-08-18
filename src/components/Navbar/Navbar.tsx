@@ -1,45 +1,108 @@
+import { useEffect, useState } from "react";
 import "./Navbar.css";
 
 const navLinks = [
-  { href: "#home", icon: "bi bi-house", label: "Inicio" },
-  { href: "#services", icon: "bi bi-grid", label: "Servicios" },
-  { href: "#portfolio", icon: "bi bi-images", label: "Portafolio" },
-  { href: "#faq", icon: "bi bi-question-circle", label: "FAQ" },
-  { href: "#contact", icon: "bi bi-envelope", label: "Contacto" },
+  { href: "#home", id: "home", label: "Inicio" },
+  { href: "#services", id: "services", label: "Servicios" },
+  { href: "#portfolio", id: "portfolio", label: "Proyectos" },
+  { href: "#faq", id: "faq", label: "FAQ" },
 ];
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const updateScrolledState = () => setIsScrolled(window.scrollY > 24);
+    updateScrolledState();
+    window.addEventListener("scroll", updateScrolledState, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrolledState);
+  }, []);
+
+  useEffect(() => {
+    const sections = [...navLinks, { href: "#contact", id: "contact", label: "Contacto" }]
+      .map(({ id }) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleEntry) setActiveSection(visibleEntry.target.id);
+      },
+      { rootMargin: "-22% 0px -62%", threshold: [0.05, 0.25, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isOpen]);
+
+  const closeMenu = () => setIsOpen(false);
+
   return (
-    <nav className="navbar navbar-expand-lg fixed-top custom-navbar">
-      <div className="container">
+    <nav
+      className={`site-navbar${isScrolled ? " site-navbar--scrolled" : ""}`}
+      aria-label="Navegación principal"
+    >
+      <div className="site-navbar__inner">
+        <a className="site-brand" href="#home" onClick={closeMenu} aria-label="ACGDevStudio, ir al inicio">
+          <span className="site-brand__mark" aria-hidden="true">ACG</span>
+          <span className="site-brand__copy">
+            <span className="site-brand__name">ACGDevStudio</span>
+            <span className="site-brand__descriptor">Estudio web independiente</span>
+          </span>
+        </a>
 
         <button
-          className="navbar-toggler custom-toggler"
+          className={`site-menu-toggle${isOpen ? " site-menu-toggle--open" : ""}`}
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNavbar"
-          aria-controls="mainNavbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          aria-expanded={isOpen}
+          aria-controls="primary-navigation"
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+          onClick={() => setIsOpen((open) => !open)}
         >
-          <span className="navbar-toggler-icon"></span>
+          <span />
+          <span />
         </button>
 
-        <div className="collapse navbar-collapse justify-content-end" id="mainNavbar">
-          <ul className="navbar-nav d-flex align-items-lg-center gap-1">
-            {navLinks.map(({ href, icon, label }) => (
-              <li className="nav-item" key={href}>
-                <a className="nav-link" href={href}>
-                  <span className="nav-icon">
-                    <i className={icon}></i>
-                  </span>
-                  <span className="nav-label">{label}</span>
+        <div
+          className={`site-navbar__panel${isOpen ? " site-navbar__panel--open" : ""}`}
+          id="primary-navigation"
+        >
+          <ul className="site-nav-list">
+            {navLinks.map(({ href, id, label }) => (
+              <li key={href}>
+                <a
+                  className={`site-nav-link${activeSection === id ? " site-nav-link--active" : ""}`}
+                  href={href}
+                  onClick={closeMenu}
+                  aria-current={activeSection === id ? "location" : undefined}
+                >
+                  {label}
                 </a>
               </li>
             ))}
           </ul>
-        </div>
 
+          <a className="site-navbar__cta" href="#contact" onClick={closeMenu}>
+            Cuéntame tu proyecto
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </nav>
   );

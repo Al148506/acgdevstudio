@@ -1,0 +1,112 @@
+.browser-frame {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-ink-850);
+  box-shadow: var(--shadow-md);
+}
+
+.browser-frame__chrome {
+  min-height: 2.6rem;
+  padding: 0 0.85rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.8rem;
+  border-bottom: 1px solid var(--color-line);
+  background: #101b29;
+}
+
+.browser-frame__controls {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.browser-frame__controls span {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: #566579;
+}
+
+.browser-frame__controls span:first-child {
+  background: var(--color-warm);
+}
+
+.browser-frame__address {
+  overflow: hidden;
+  color: #8695a8;
+  font-size: 0.64rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.browser-frame__status {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-cyan-functional);
+  box-shadow: 0 0 0 3px rgba(85, 199, 216, 0.1);
+}
+
+.browser-frame__viewport {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #e9edf2;
+}
+
+.browser-frame__viewport img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.browser-frame__caption {
+  min-height: 2.75rem;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-paper);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.browser-frame__caption span:last-child {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.browser-frame--compact {
+  border-radius: var(--radius-md);
+}
+
+.browser-frame--compact .browser-frame__chrome {
+  min-height: 2rem;
+}
+
+.browser-frame--compact .browser-frame__caption {
+  min-height: 2.25rem;
+  padding-block: 0.55rem;
+}
+
+@media (max-width: 560px) {
+  .browser-frame__chrome { min-height: 2.1rem; }
+  .browser-frame__caption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+}
