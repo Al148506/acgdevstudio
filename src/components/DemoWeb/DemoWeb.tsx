@@ -1,43 +1,37 @@
 import "./DemoWeb.css";
 
-const demoBenefits = [
-  "Diseño personalizado para tu negocio",
-  "Optimizado para celulares y tablets",
-  "Inspirado en los colores y estilo de tu marca",
-  "Sin compromiso — recibe tu propuesta antes de decidir",
+const proposalDetails = [
+  "Una sección clave",
+  "Dirección visual adaptada",
+  "Sin compromiso",
 ];
 
 export const DemoWeb = () => {
   return (
-    <section className="demo-section" id="demo">
-      <div className="container">
-        <div className="demo-card">
-          <div className="demo-card__glow" />
+    <section className="demo-section" id="demo" aria-labelledby="demo-title">
+      <div className="demo-panel">
+        <div className="demo-index" aria-hidden="true">
+          <span>ACG / Propuesta inicial</span>
+          <span>03 — Empezar con claridad</span>
+        </div>
 
-          <span className="demo-eyebrow">¿Aún no tienes un sitio web?</span>
-
-          <h2 className="demo-title">
-            ¿Te gustaría ver cómo podría verse
-            <br />
-            tu negocio en internet?
-          </h2>
-
+        <div className="demo-copy">
+          <p>Antes de desarrollar</p>
+          <h2 id="demo-title">Visualiza una primera dirección para tu web.</h2>
           <p className="demo-description">
-            Solicita una propuesta visual gratuita y descubre el potencial
-            de una página web profesional para tu negocio.
+            Recibes una propuesta visual inicial gratuita para una sección clave,
+            adaptada al estilo y las necesidades de tu negocio. Puedes revisarla
+            antes de decidir si avanzamos.
           </p>
+        </div>
 
-          <ul className="demo-benefits">
-            {demoBenefits.map((b) => (
-              <li key={b}>
-                <i className="bi bi-check-circle-fill"></i> {b}
-              </li>
-            ))}
+        <div className="demo-action">
+          <ul aria-label="Qué incluye la propuesta visual">
+            {proposalDetails.map((detail) => <li key={detail}>{detail}</li>)}
           </ul>
-
-          <a href="#contact" className="demo-cta">
-            Solicitar Demo Gratuita
-            <i className="bi bi-arrow-right"></i>
+          <a href="#contact">
+            Solicitar propuesta visual
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>

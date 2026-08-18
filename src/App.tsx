@@ -3,7 +3,6 @@ import Navbar from "./components/Navbar/Navbar";
 import "./styles/global.css";
 import { DemoWeb } from "./components/DemoWeb/DemoWeb";
 import { Services } from "./components/Services/Services";
-import { Benefits } from "./components/Benefits/Benefits";
 import { Process } from "./components/Process/Process";
 import { CaseStudies } from "./components/CaseStudies/CaseStudies";
 import { Projects } from "./components/Projects/ProjectSection";
@@ -17,11 +16,10 @@ function App() {
     <>
       <Navbar />
       <Hero />
-      <DemoWeb />
-      <Services />
-      <Benefits />
-      <Process />
       <CaseStudies />
+      <Services />
+      <Process />
+      <DemoWeb />
       <Projects />
       <FAQ />
       <Contact />

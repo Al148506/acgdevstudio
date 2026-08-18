@@ -1,35 +1,103 @@
 import "./Services.css";
 
-const services = [
-  { icon: "bi bi-building", title: "Sitios Web Corporativos", desc: "Presencia profesional para tu negocio. Tu carta de presentación digital 24/7." },
-  { icon: "bi bi-layout-text-window", title: "Landing Pages", desc: "Páginas diseñadas para convertir visitantes en clientes. Ideal para campañas y promociones." },
-  { icon: "bi bi-book", title: "Catálogos y Menús Digitales", desc: "Tu menú o catálogo siempre actualizado, accesible desde cualquier celular con un clic." },
-  { icon: "bi bi-whatsapp", title: "Integración con WhatsApp", desc: "Tus clientes te contactan directamente con un solo clic desde cualquier página." },
-  { icon: "bi bi-phone", title: "Optimización para Móviles", desc: "Tu sitio se ve y funciona perfecto en celulares, tablets y computadoras." },
-  { icon: "bi bi-geo-alt", title: "Posicionamiento Local", desc: "Aparece en Google cuando los clientes buscan negocios como el tuyo en tu zona." },
+const solutions = [
+  {
+    number: "01",
+    title: "Lanzar tu presencia digital",
+    audience: "Para negocios y profesionales que necesitan empezar con una base clara y profesional.",
+    description: "Organizamos lo que quieres comunicar y lo convertimos en un sitio fácil de entender, usar y compartir.",
+    includes: [
+      "Landing page",
+      "Sitio corporativo",
+      "Estructura de contenido",
+      "Diseño responsive",
+      "Formularios y contacto",
+    ],
+  },
+  {
+    number: "02",
+    title: "Facilitar consultas, ventas o reservas",
+    audience: "Para negocios que necesitan que su web ayude a cada visitante a realizar una acción.",
+    description: "Diseñamos recorridos claros para que las personas encuentren la información adecuada y sepan cómo contactarte o avanzar.",
+    includes: [
+      "Catálogos y menús",
+      "Integración con WhatsApp",
+      "Formularios",
+      "Llamadas a la acción",
+      "Servicios o productos",
+    ],
+  },
+  {
+    number: "03",
+    title: "Mejorar una web que ya no representa tu negocio",
+    audience: "Para negocios que ya tienen presencia online, pero necesitan una imagen más actual y clara.",
+    description: "Revisamos lo que ya existe y priorizamos los cambios que pueden mejorar su presentación, lectura y funcionamiento.",
+    includes: [
+      "Rediseño visual",
+      "Claridad del contenido",
+      "Adaptación responsive",
+      "Rendimiento",
+      "Optimización básica",
+    ],
+  },
+];
+
+const capabilities = [
+  "Diseño responsive",
+  "WhatsApp",
+  "SEO básico y local",
+  "Rendimiento",
+  "Formularios",
+  "Buenas prácticas técnicas",
 ];
 
 export const Services = () => {
   return (
-    <section className="services-section" id="services">
-      <div className="container">
-        <div className="services-header">
-          <span className="services-eyebrow">Servicios</span>
-          <h2 className="services-title">
-            Lo que <span>hacemos por tu negocio</span>
-          </h2>
+    <section className="services-section" id="services" aria-labelledby="services-title">
+      <div className="services-shell">
+        <header className="services-header">
+          <p className="services-index">ACG / 02 · Servicios</p>
+          <div className="services-heading">
+            <h2 id="services-title">Una web útil empieza por entender qué necesita tu negocio.</h2>
+            <p>
+              No necesitas llegar con una solución definida. Te ayudo a ordenar tus ideas,
+              elegir el alcance adecuado y construir a partir de objetivos concretos.
+            </p>
+          </div>
+        </header>
+
+        <div className="solutions-list">
+          {solutions.map((solution) => (
+            <article className="solution-item" key={solution.number}>
+              <div className="solution-intro">
+                <span className="solution-number" aria-hidden="true">ACG / {solution.number}</span>
+                <h3>{solution.title}</h3>
+                <p>{solution.audience}</p>
+              </div>
+
+              <div className="solution-detail">
+                <p className="solution-description">{solution.description}</p>
+                <ul aria-label={`Elementos que puede incluir: ${solution.title}`}>
+                  {solution.includes.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
         </div>
 
-        <div className="services-grid">
-          {services.map(({ icon, title, desc }) => (
-            <div key={title} className="service-card">
-              <div className="service-icon">
-                <i className={icon} />
-              </div>
-              <h3 className="service-card-title">{title}</h3>
-              <p className="service-card-desc">{desc}</p>
-            </div>
-          ))}
+        <aside className="services-capabilities" aria-labelledby="capabilities-title">
+          <div className="capabilities-heading">
+            <span>Base compartida</span>
+            <h3 id="capabilities-title">Capacidades que pueden acompañar cada solución</h3>
+          </div>
+          <ul>
+            {capabilities.map((capability) => <li key={capability}>{capability}</li>)}
+          </ul>
+        </aside>
+
+        <div className="services-guidance">
+          <p><strong>¿No sabes cuál necesitas?</strong> Podemos definirlo juntos, sin tecnicismos innecesarios.</p>
+          <a href="#contact">Cuéntame tu proyecto <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>

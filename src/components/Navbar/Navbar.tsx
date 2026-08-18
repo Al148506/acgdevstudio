@@ -3,8 +3,8 @@ import "./Navbar.css";
 
 const navLinks = [
   { href: "#home", id: "home", label: "Inicio" },
-  { href: "#services", id: "services", label: "Servicios" },
   { href: "#portfolio", id: "portfolio", label: "Proyectos" },
+  { href: "#services", id: "services", label: "Servicios" },
   { href: "#faq", id: "faq", label: "FAQ" },
 ];
 
@@ -25,19 +25,25 @@ function Navbar() {
       .map(({ id }) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const updateActiveSection = () => {
+      const readingLine = window.scrollY + Math.max(120, window.innerHeight * 0.28);
+      let currentSection = sections[0]?.id ?? "home";
 
-        if (visibleEntry) setActiveSection(visibleEntry.target.id);
-      },
-      { rootMargin: "-22% 0px -62%", threshold: [0.05, 0.25, 0.5] },
-    );
+      sections.forEach((section) => {
+        if (section.offsetTop <= readingLine) currentSection = section.id;
+      });
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+      setActiveSection(currentSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
 
   useEffect(() => {
