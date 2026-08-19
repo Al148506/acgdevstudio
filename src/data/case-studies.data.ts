@@ -4,33 +4,64 @@ import landingPageMartha from "../images/LandingPageMartha/01HomePage.png";
 export interface CaseStudy {
   id: string;
   title: string;
-  description: string;
+  projectType: string;
+  context: string;
   image: string;
-  reto: string;
-  solucion: string;
-  resultado: string;
+  imageAlt: string;
+  frameTitle: string;
+  frameUrl: string;
+  problem: string;
+  solution: string;
+  delivery: string[];
+  stack: string[];
   liveUrl: string;
 }
 
 export const caseStudies: CaseStudy[] = [
   {
     id: "inredtelecom",
-    title: "Inredtelecom — Sitio Web Corporativo",
-    description: "Sitio web profesional para empresa de telecomunicaciones con catálogo de servicios y galería de proyectos.",
+    title: "Inredtelecom",
+    projectType: "Sitio web corporativo",
+    context:
+      "Una presencia digital para explicar los servicios de la empresa y reunir su trabajo en un solo lugar.",
     image: inredtelecom,
-    reto: "Inredtelecom necesitaba una presencia digital profesional que reflejara la calidad de sus servicios de telecomunicaciones. Su presencia en línea era limitada y no contaban con un canal digital para mostrar su portafolio de proyectos o facilitar el contacto con clientes potenciales.",
-    solucion: "Desarrollamos un sitio web corporativo moderno con secciones de servicios, galería de proyectos realizados, testimonios de clientes y un formulario de contacto integrado. El diseño se enfocó en transmitir profesionalismo y confianza, con una navegación clara y contenido visual de sus proyectos.",
-    resultado: "Inredtelecom ahora cuenta con un sitio web profesional que funciona como su principal carta de presentación digital. Sus clientes pueden conocer sus servicios, ver proyectos anteriores y contactarlos directamente desde la página.",
+    imageAlt:
+      "Página del sitio corporativo de Inredtelecom con información de la empresa, sus valores y servicios",
+    frameTitle: "Inredtelecom · Sitio corporativo",
+    frameUrl: "inredtelecom.vercel.app",
+    problem:
+      "La empresa necesitaba presentar con claridad su experiencia en telecomunicaciones, sus servicios y los proyectos realizados.",
+    solution:
+      "Se organizó el contenido en una navegación directa y una identidad visual sobria, pensada para facilitar la consulta y el contacto.",
+    delivery: [
+      "Presentación de servicios",
+      "Galería de trabajos",
+      "Recomendaciones y contacto",
+    ],
+    stack: ["React", "TypeScript", "Vite"],
     liveUrl: "https://inredtelecom.vercel.app/",
   },
   {
     id: "martha-garcia-portfolio",
-    title: "Martha García — Portafolio Freelance",
-    description: "Portafolio web profesional para diseñadora gráfica freelance con galería de trabajos y enlace directo a WhatsApp.",
+    title: "Martha García",
+    projectType: "Portfolio profesional",
+    context:
+      "Un sitio propio para presentar su perfil como diseñadora y dar protagonismo a su trabajo creativo.",
     image: landingPageMartha,
-    reto: "Martha, una diseñadora gráfica independiente, necesitaba un portafolio profesional que reflejara su identidad visual y le permitiera mostrar su trabajo a clientes potenciales. Dependía exclusivamente de redes sociales para conseguir proyectos.",
-    solucion: "Creamos un sitio web portafolio con galería visual de sus trabajos, sección de servicios, enlace directo a WhatsApp y formulario de contacto. El diseño se adaptó a su identidad de marca, con una estética limpia y profesional que resalta su trabajo creativo.",
-    resultado: "Martha ahora tiene una presencia digital profesional independiente de las redes sociales. Sus clientes potenciales pueden ver su portafolio completo, conocer sus servicios y contactarla directamente por WhatsApp con un solo clic.",
+    imageAlt:
+      "Página principal del portfolio de Martha García con su propuesta como diseñadora gráfica y accesos al portfolio y contacto",
+    frameTitle: "Martha García · Portfolio",
+    frameUrl: "portfolio-martha.vercel.app",
+    problem:
+      "Martha necesitaba reunir su identidad, servicios y proyectos en una presentación profesional fácil de compartir con posibles clientes.",
+    solution:
+      "Se diseñó un portfolio visual alineado con su marca, con una lectura clara y recorridos directos hacia sus trabajos y formas de contacto.",
+    delivery: [
+      "Portfolio visual por categorías",
+      "Presentación de servicios",
+      "Contacto y acceso a WhatsApp",
+    ],
+    stack: ["React", "TypeScript", "Vite"],
     liveUrl: "https://portfolio-martha.vercel.app/",
   },
 ];

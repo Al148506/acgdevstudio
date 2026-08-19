@@ -1,66 +1,87 @@
+import { BrowserFrame } from "../BrowserFrame/BrowserFrame";
 import { caseStudies } from "../../data/case-studies.data";
 import "./CaseStudies.css";
 
 export const CaseStudies = () => {
   return (
-    <section className="cases-section" id="portfolio">
-      <div className="container">
-        <div className="cases-header">
-          <span className="cases-eyebrow">Casos de éxito</span>
-          <h2 className="cases-title">
-            Proyectos que <span>generan resultados</span>
-          </h2>
-          <p className="cases-subtitle">
-            Conoce cómo hemos ayudado a otros negocios a tener una presencia digital profesional.
-          </p>
-        </div>
+    <section className="cases-section" id="portfolio" aria-labelledby="cases-title">
+      <div className="cases-shell">
+        <header className="cases-header">
+          <p className="cases-index">ACG / Trabajo seleccionado</p>
+
+          <div className="cases-heading">
+            <p className="cases-eyebrow">Proyectos para clientes</p>
+            <h2 id="cases-title">Trabajo real, presentado con contexto.</h2>
+            <p>
+              Dos proyectos creados para convertir necesidades concretas en sitios claros,
+              profesionales y fáciles de usar.
+            </p>
+          </div>
+        </header>
 
         <div className="cases-list">
-          {caseStudies.map((cs, idx) => (
-            <div key={cs.id} className="case-card">
-              <div className="case-card__image">
-                <img src={cs.image} alt={cs.title} />
-              </div>
+          {caseStudies.map((project, index) => {
+            const projectNumber = String(index + 1).padStart(2, "0");
 
-              <div className="case-card__body">
-                <span className="case-number">Caso {String(idx + 1).padStart(2, "0")}</span>
-                <h3 className="case-title">{cs.title}</h3>
-                <p className="case-desc">{cs.description}</p>
+            return (
+              <article
+                key={project.id}
+                className={`case-study${index % 2 === 1 ? " case-study--reverse" : ""}`}
+                aria-labelledby={`${project.id}-title`}
+              >
+                <header className="case-intro">
+                  <p className="case-number">ACG / Project {projectNumber}</p>
+                  <p className="case-type">{project.projectType}</p>
+                  <h3 id={`${project.id}-title`}>{project.title}</h3>
+                  <p className="case-context">{project.context}</p>
+                </header>
+
+                <BrowserFrame
+                  className="case-visual"
+                  src={project.image}
+                  alt={project.imageAlt}
+                  title={project.frameTitle}
+                  url={project.frameUrl}
+                />
 
                 <div className="case-details">
                   <div className="case-detail">
-                    <span className="case-detail-label">
-                      <i className="bi bi-exclamation-triangle"></i> El reto
-                    </span>
-                    <p className="case-detail-text">{cs.reto}</p>
+                    <p className="case-detail__label">Necesidad</p>
+                    <p>{project.problem}</p>
                   </div>
 
                   <div className="case-detail">
-                    <span className="case-detail-label">
-                      <i className="bi bi-tools"></i> La solución
-                    </span>
-                    <p className="case-detail-text">{cs.solucion}</p>
+                    <p className="case-detail__label">Respuesta</p>
+                    <p>{project.solution}</p>
                   </div>
 
-                  <div className="case-detail">
-                    <span className="case-detail-label">
-                      <i className="bi bi-check-circle"></i> El resultado
-                    </span>
-                    <p className="case-detail-text">{cs.resultado}</p>
+                  <div className="case-detail case-detail--delivery">
+                    <p className="case-detail__label">Entrega</p>
+                    <ul>
+                      {project.delivery.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
-                <a
-                  href={cs.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="case-cta"
-                >
-                  <i className="bi bi-box-arrow-up-right"></i> Ver sitio web
-                </a>
-              </div>
-            </div>
-          ))}
+                <footer className="case-footer">
+                  <p className="case-stack" aria-label={`Tecnologías: ${project.stack.join(", ")}`}>
+                    {project.stack.join(" · ")}
+                  </p>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="case-cta"
+                    aria-label={`Ver proyecto ${project.title} en una nueva pestaña`}
+                  >
+                    Ver proyecto <span aria-hidden="true">↗</span>
+                  </a>
+                </footer>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
