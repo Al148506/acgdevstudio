@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import "./Navbar.css";
 
 const navLinks = [
-  { href: "#portfolio", id: "portfolio", label: "Trabajo" },
-  { href: "#process", id: "process", label: "Proceso" },
-  { href: "#faq", id: "faq", label: "FAQ" },
+  { href: "#home", id: "home", label: "Inicio" },
+  { href: "#portfolio", id: "portfolio", label: "Proyectos" },
+  { href: "#process", id: "process", label: "Cómo trabajo" },
+  { href: "#faq", id: "faq", label: "Preguntas" },
+  { href: "#contact", id: "contact", label: "Contacto" },
 ];
 
 const observedSectionIds = ["home", "portfolio", "process", "demo", "faq", "contact"];

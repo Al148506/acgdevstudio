@@ -14,11 +14,12 @@ function Hero() {
           </div>
 
           <h1 className="hero-title" id="hero-title">
-            Tu negocio merece una web a su altura.
+            Tu negocio merece una web a su altura
           </h1>
 
           <p className="hero-description">
-            Creo sitios web profesionales para ayudarte a destacar y conectar con más clientes.
+            Creo sitios web profesionales para ayudarte a destacar y conectar
+            con más clientes.
           </p>
 
           <p className="hero-capabilities">
@@ -40,7 +41,10 @@ function Hero() {
           </p>
         </div>
 
-        <div className="hero-work" aria-label="Muestra de proyectos y conceptos realizados">
+        <div
+          className="hero-work"
+          aria-label="Muestra de proyectos y conceptos realizados"
+        >
           <div className="hero-work__meta" aria-hidden="true">
             <span>ACG / 01—03</span>
             <span>PROYECTOS SELECCIONADOS</span>
