@@ -3,36 +3,36 @@ import "./FAQ.css";
 
 const faqData = [
   {
-    q: "¿Cuánto cuesta una página web?",
-    a: "El costo depende del tipo de proyecto: una landing page no es lo mismo que un sitio web corporativo con varias secciones. Te ofrecemos una cotización personalizada sin compromiso para que sepas exactamente lo que necesitas."
+    q: "¿Qué tipo de proyectos puedes realizar?",
+    a: "Puedo desarrollar sitios web para negocios y profesionales, landing pages, catálogos, menús digitales y rediseños. También puedo integrar formularios o contacto por WhatsApp cuando el proyecto lo necesite."
   },
   {
-    q: "¿Cuánto tiempo tarda el desarrollo?",
-    a: "Entregamos proyectos funcionales en 3 a 10 días hábiles, dependiendo de la complejidad. Las landing pages son más rápidas; los sitios más completos pueden tomar un poco más. Te mantenemos informado en cada etapa."
+    q: "¿Cuánto puede tardar un proyecto?",
+    a: "Depende del alcance, el contenido y las funciones necesarias. Después de conversar sobre tu proyecto puedo darte una estimación clara y explicarte qué sigue en cada etapa."
+  },
+  {
+    q: "¿Cómo funciona el proceso?",
+    a: "Primero conversamos sobre tu negocio y tus objetivos. Después definimos la propuesta, desarrollo el sitio y revisamos juntos los detalles antes de publicarlo."
   },
   {
     q: "¿Necesito dominio y hosting?",
-    a: "Sí, pero no te preocupes. Te asesoramos para elegir el mejor dominio y hosting para tu negocio, y nos encargamos de toda la configuración técnica para que tu sitio esté en línea sin complicaciones."
+    a: "El sitio necesitará dominio y hosting para estar en línea. Si todavía no los tienes, puedo orientarte en la elección y ayudarte con la configuración necesaria."
   },
   {
-    q: "¿Mi sitio funcionará en celulares?",
-    a: "Sí, absolutamente. Todos nuestros sitios están optimizados para verse perfectos en celulares, tablets y computadoras. Más del 70% de los usuarios navegan desde su teléfono, por lo que es una prioridad para nosotros."
+    q: "¿Cómo funcionan los cambios y revisiones?",
+    a: "Revisamos el sitio antes de publicarlo y realizamos los ajustes acordados para el proyecto. El alcance de las revisiones queda claro desde la propuesta."
   },
   {
-    q: "¿Podré solicitar cambios después de la entrega?",
-    a: "Claro. Ofrecemos soporte continuo después de la entrega. Si necesitas ajustar texto, agregar imágenes o hacer cambios, solo contáctanos y lo resolvemos rápidamente."
+    q: "¿Ofreces mantenimiento después de publicar?",
+    a: "Podemos acordar mantenimiento o actualizaciones según lo que necesite tu sitio. Si aplica, se define por separado para que sepas qué incluye."
   },
   {
-    q: "¿Puedo actualizar el contenido yo mismo?",
-    a: "Sí, si lo deseas podemos configurar un panel sencillo para que administres tu contenido. Y si prefieres no preocuparte por eso, nosotros nos encargamos de las actualizaciones por ti."
+    q: "¿Qué es la propuesta visual inicial?",
+    a: "Es una primera dirección visual aplicada a una parte representativa de tu proyecto y adaptada a tu negocio. Puedes revisarla antes de decidir si avanzamos, sin compromiso."
   },
   {
-    q: "¿Qué información necesito proporcionar?",
-    a: "Básicamente lo que quieras mostrar: imágenes de tu negocio, información de tus servicios o productos, horarios, precios y cualquier detalle que consideres importante para tus clientes. Nosotros te guiamos."
-  },
-  {
-    q: "¿Me ayudan con la publicación del sitio?",
-    a: "Sí, nos encargamos de todo el proceso de publicación. Desde la configuración del dominio y hosting hasta la puesta en línea. Tú solo aprobas el diseño y nosotros hacemos el resto."
+    q: "¿Cómo podemos empezar?",
+    a: "Cuéntame brevemente sobre tu negocio y lo que necesitas mediante el formulario o WhatsApp. A partir de ahí podemos conversar y definir el siguiente paso."
   },
 ];
 

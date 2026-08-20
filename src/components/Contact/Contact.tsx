@@ -93,7 +93,7 @@ export const Contact = () => {
         Swal.fire({
           icon: "success",
           title: "¡Gracias por contactarnos!",
-          text: "Revisaremos tu solicitud y nos pondremos en contacto contigo lo antes posible.",
+          text: "Revisaré tu solicitud y me pondré en contacto contigo para conversar sobre el proyecto.",
           background: "#0d1b2a",
           color: "#f0f6ff",
           iconColor: "#4cc9f0",
@@ -136,7 +136,7 @@ export const Contact = () => {
           <span className="contact-eyebrow">{t('contact.eyebrow')}</span>
           <h2 className="contact-title">{t('contact.title')}</h2>
           <p className="contact-subtitle">
-            Cuéntanos sobre tu negocio y te enviaremos una propuesta personalizada.
+            Cuéntame sobre tu negocio y te enviaré una propuesta personalizada.
           </p>
         </div>
 

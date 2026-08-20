@@ -1,5 +1,6 @@
 import { BrowserFrame } from "../BrowserFrame/BrowserFrame";
 import inredtelecomWork from "../../images/Inredtelecom/03OurWorks.png";
+import laChiludaHome from "../../images/RestaurantDemo/01HomePage.png";
 import marthaPortfolio from "../../images/LandingPageMartha/01HomePage.png";
 import "./Hero.css";
 
@@ -20,6 +21,10 @@ function Hero() {
             Creo sitios web profesionales para ayudarte a destacar y conectar con más clientes.
           </p>
 
+          <p className="hero-capabilities">
+            Sitios web · Landing pages · Catálogos · Menús digitales · WhatsApp
+          </p>
+
           <div className="hero-actions" aria-label="Acciones principales">
             <a href="#contact" className="hero-button hero-button--primary">
               Cuéntame tu proyecto <span aria-hidden="true">↗</span>
@@ -35,24 +40,35 @@ function Hero() {
           </p>
         </div>
 
-        <div className="hero-work" aria-label="Muestra de proyectos realizados">
+        <div className="hero-work" aria-label="Muestra de proyectos y conceptos realizados">
           <div className="hero-work__meta" aria-hidden="true">
-            <span>ACG / 01</span>
-            <span>TRABAJO SELECCIONADO</span>
+            <span>ACG / 01—03</span>
+            <span>PROYECTOS SELECCIONADOS</span>
           </div>
 
           <div className="hero-work__frames">
             <BrowserFrame
               className="hero-work__primary"
-              src={marthaPortfolio}
-              alt="Página principal del portafolio web desarrollado para la diseñadora Martha García"
-              title="Martha García · Portfolio"
-              url="portfolio-martha.vercel.app"
+              src={laChiludaHome}
+              alt="Página principal de la demo comercial para La Chiluda Seafood & Bar"
+              title="La Chiluda · Concepto para restaurante"
+              url="la-chiluda-premiere.vercel.app"
+              statusLabel="Demo comercial"
               loading="eager"
             />
 
             <BrowserFrame
               className="hero-work__secondary"
+              src={marthaPortfolio}
+              alt="Página principal del portfolio web desarrollado para la diseñadora Martha García"
+              title="Martha García · Portfolio"
+              url="portfolio-martha.vercel.app"
+              variant="compact"
+              loading="eager"
+            />
+
+            <BrowserFrame
+              className="hero-work__tertiary"
               src={inredtelecomWork}
               alt="Galería de trabajos del sitio corporativo desarrollado para Inredtelecom"
               title="Inredtelecom · Sitio corporativo"

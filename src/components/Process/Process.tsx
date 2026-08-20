@@ -36,7 +36,7 @@ export const Process = () => {
     <section className="process-section" id="process" aria-labelledby="process-title">
       <div className="process-shell">
         <header className="process-header">
-          <p className="process-index">ACG / 03 · Proceso</p>
+          <p className="process-index">ACG / 02 · Proceso</p>
 
           <div className="process-heading">
             <p className="process-eyebrow">De la primera conversación a la publicación</p>

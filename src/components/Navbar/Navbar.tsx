@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import "./Navbar.css";
 
 const navLinks = [
-  { href: "#home", id: "home", label: "Inicio" },
-  { href: "#portfolio", id: "portfolio", label: "Proyectos" },
-  { href: "#services", id: "services", label: "Servicios" },
+  { href: "#portfolio", id: "portfolio", label: "Trabajo" },
+  { href: "#process", id: "process", label: "Proceso" },
   { href: "#faq", id: "faq", label: "FAQ" },
 ];
+
+const observedSectionIds = ["home", "portfolio", "process", "demo", "faq", "contact"];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,8 +22,8 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = [...navLinks, { href: "#contact", id: "contact", label: "Contacto" }]
-      .map(({ id }) => document.getElementById(id))
+    const sections = observedSectionIds
+      .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
 
     const updateActiveSection = () => {
@@ -104,7 +105,12 @@ function Navbar() {
             ))}
           </ul>
 
-          <a className="site-navbar__cta" href="#contact" onClick={closeMenu}>
+          <a
+            className="site-navbar__cta"
+            href="#contact"
+            onClick={closeMenu}
+            aria-current={activeSection === "contact" ? "location" : undefined}
+          >
             Cuéntame tu proyecto
             <span aria-hidden="true">↗</span>
           </a>

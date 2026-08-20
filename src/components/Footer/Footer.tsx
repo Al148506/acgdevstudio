@@ -2,7 +2,7 @@ import "./Footer.css";
 
 const phoneNumber = "524495865567";
 const whatsappMessage = encodeURIComponent(
-  "Hola, me gustaría recibir información sobre sus servicios web.",
+  "Hola, me gustaría recibir información sobre tus servicios web.",
 );
 
 const WhatsAppIcon = () => (
@@ -36,8 +36,8 @@ const EmailIcon = () => (
 
 const navLinks = [
   { href: "#home", label: "Inicio" },
-  { href: "#services", label: "Servicios" },
-  { href: "#portfolio", label: "Portafolio" },
+  { href: "#portfolio", label: "Trabajo" },
+  { href: "#process", label: "Proceso" },
   { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contacto" },
 ];
@@ -62,14 +62,14 @@ export default function Footer() {
               className="footer-btn footer-btn--primary"
             >
               <WhatsAppIcon />
-              Escríbenos por WhatsApp
+              Escríbeme por WhatsApp
             </a>
             <a
               href="mailto:al148506@hotmail.com"
               className="footer-btn footer-btn--ghost"
             >
               <EmailIcon />
-              Envíanos un correo
+              Envíame un correo
             </a>
           </div>
         </div>

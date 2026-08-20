@@ -19,7 +19,7 @@ export const BrowserFrame = ({
   variant = "default",
   loading = "lazy",
   className = "",
-  statusLabel = "Proyecto real",
+  statusLabel = "",
 }: BrowserFrameProps) => {
   const classes = ["browser-frame", `browser-frame--${variant}`, className]
     .filter(Boolean)

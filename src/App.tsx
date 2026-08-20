@@ -2,10 +2,8 @@ import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
 import "./styles/global.css";
 import { DemoWeb } from "./components/DemoWeb/DemoWeb";
-import { Services } from "./components/Services/Services";
 import { Process } from "./components/Process/Process";
 import { CaseStudies } from "./components/CaseStudies/CaseStudies";
-import { Projects } from "./components/Projects/ProjectSection";
 import { FAQ } from "./components/FAQ/FAQ";
 import { Contact } from "./components/Contact/Contact";
 import { WhatsAppButton } from "./components/WhatsAppButton/WhatsAppButton";
@@ -15,14 +13,14 @@ function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <CaseStudies />
-      <Services />
-      <Process />
-      <DemoWeb />
-      <Projects />
-      <FAQ />
-      <Contact />
+      <main>
+        <Hero />
+        <CaseStudies />
+        <Process />
+        <DemoWeb />
+        <FAQ />
+        <Contact />
+      </main>
       <WhatsAppButton />
       <Footer />
     </>
