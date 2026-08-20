@@ -145,6 +145,15 @@
   line-height: 1.7;
 }
 
+.case-disclosure {
+  margin: 1rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--color-warm);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
 .case-visual {
   grid-area: visual;
   position: sticky;
@@ -209,16 +218,9 @@
   grid-area: footer;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 1.5rem;
   margin-top: 2rem;
-}
-
-.case-stack {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 0.67rem;
-  letter-spacing: 0.06em;
 }
 
 .case-cta {

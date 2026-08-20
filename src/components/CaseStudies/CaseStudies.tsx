@@ -4,17 +4,23 @@ import "./CaseStudies.css";
 
 export const CaseStudies = () => {
   return (
-    <section className="cases-section" id="portfolio" aria-labelledby="cases-title">
+    <section
+      className="cases-section"
+      id="portfolio"
+      aria-labelledby="cases-title"
+    >
       <div className="cases-shell">
         <header className="cases-header">
           <p className="cases-index">ACG / Trabajo seleccionado</p>
 
           <div className="cases-heading">
-            <p className="cases-eyebrow">Proyectos para clientes</p>
-            <h2 id="cases-title">Trabajo real, presentado con contexto.</h2>
+            <p className="cases-eyebrow">Proyectos y demos comerciales</p>
+            <h2 id="cases-title">
+              Proyectos pensados para necesidades reales.
+            </h2>
             <p>
-              Dos proyectos creados para convertir necesidades concretas en sitios claros,
-              profesionales y fáciles de usar.
+              Trabajo para clientes y conceptos comerciales que convierten
+              necesidades concretas en sitios claros y fáciles de usar.
             </p>
           </div>
         </header>
@@ -34,6 +40,9 @@ export const CaseStudies = () => {
                   <p className="case-type">{project.projectType}</p>
                   <h3 id={`${project.id}-title`}>{project.title}</h3>
                   <p className="case-context">{project.context}</p>
+                  {project.disclosure && (
+                    <p className="case-disclosure">{project.disclosure}</p>
+                  )}
                 </header>
 
                 <BrowserFrame
@@ -42,6 +51,7 @@ export const CaseStudies = () => {
                   alt={project.imageAlt}
                   title={project.frameTitle}
                   url={project.frameUrl}
+                  statusLabel={project.frameStatus}
                 />
 
                 <div className="case-details">
@@ -65,20 +75,19 @@ export const CaseStudies = () => {
                   </div>
                 </div>
 
-                <footer className="case-footer">
-                  <p className="case-stack" aria-label={`Tecnologías: ${project.stack.join(", ")}`}>
-                    {project.stack.join(" · ")}
-                  </p>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="case-cta"
-                    aria-label={`Ver proyecto ${project.title} en una nueva pestaña`}
-                  >
-                    Ver proyecto <span aria-hidden="true">↗</span>
-                  </a>
-                </footer>
+                {project.liveUrl && (
+                  <footer className="case-footer">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="case-cta"
+                      aria-label={`Ver proyecto ${project.title} en una nueva pestaña`}
+                    >
+                      Ver proyecto <span aria-hidden="true">↗</span>
+                    </a>
+                  </footer>
+                )}
               </article>
             );
           })}

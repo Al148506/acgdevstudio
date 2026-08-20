@@ -8,6 +8,7 @@ interface BrowserFrameProps {
   variant?: "default" | "compact";
   loading?: "eager" | "lazy";
   className?: string;
+  statusLabel?: string;
 }
 
 export const BrowserFrame = ({
@@ -18,6 +19,7 @@ export const BrowserFrame = ({
   variant = "default",
   loading = "lazy",
   className = "",
+  statusLabel = "Proyecto real",
 }: BrowserFrameProps) => {
   const classes = ["browser-frame", `browser-frame--${variant}`, className]
     .filter(Boolean)
@@ -37,7 +39,7 @@ export const BrowserFrame = ({
 
       <figcaption className="browser-frame__caption">
         <span>{title}</span>
-        <span>Proyecto real</span>
+        <span>{statusLabel}</span>
       </figcaption>
     </figure>
   );

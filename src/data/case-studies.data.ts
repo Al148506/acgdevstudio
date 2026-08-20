@@ -1,5 +1,6 @@
 import inredtelecom from "../images/Inredtelecom/01HomePage.png";
 import landingPageMartha from "../images/LandingPageMartha/01HomePage.png";
+import laChiluda from "../images/RestaurantDemo/01HomePage.png";
 
 export interface CaseStudy {
   id: string;
@@ -10,11 +11,12 @@ export interface CaseStudy {
   imageAlt: string;
   frameTitle: string;
   frameUrl: string;
+  frameStatus?: string;
+  disclosure?: string;
   problem: string;
   solution: string;
   delivery: string[];
-  stack: string[];
-  liveUrl: string;
+  liveUrl?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -38,7 +40,6 @@ export const caseStudies: CaseStudy[] = [
       "Galería de trabajos",
       "Recomendaciones y contacto",
     ],
-    stack: ["React", "TypeScript", "Vite"],
     liveUrl: "https://inredtelecom.vercel.app/",
   },
   {
@@ -61,7 +62,31 @@ export const caseStudies: CaseStudy[] = [
       "Presentación de servicios",
       "Contacto y acceso a WhatsApp",
     ],
-    stack: ["React", "TypeScript", "Vite"],
     liveUrl: "https://portfolio-martha.vercel.app/",
+  },
+  {
+    id: "la-chiluda-demo",
+    title: "La Chiluda Seafood & Bar",
+    projectType: "Demo comercial · Concepto para restaurante",
+    context:
+      "Una demostración de cómo un restaurante puede presentar su ambiente, sus platillos y la información necesaria antes de una visita.",
+    image: laChiluda,
+    imageAlt:
+      "Página principal de la demo para La Chiluda Seafood & Bar con fotografía de platillos, acceso al menú y reserva por WhatsApp",
+    frameTitle: "La Chiluda · Concepto para restaurante",
+    frameUrl: "la-chiluda-premiere.vercel.app",
+    frameStatus: "Demo comercial",
+    disclosure:
+      "Concepto desarrollado como propuesta comercial; no representa un encargo contratado por el restaurante.",
+    problem:
+      "Un restaurante necesita mostrar su propuesta, menú y ubicaciones de forma atractiva para que las personas puedan conocerlo antes de acudir.",
+    solution:
+      "Se creó una experiencia responsive con secciones del restaurante, galería, sucursales y accesos directos para consultas por WhatsApp.",
+    delivery: [
+      "Platillos, galería y sucursales",
+      "Menú dinámico de demostración",
+      "Pedidos y consultas por WhatsApp",
+    ],
+    liveUrl: "https://la-chiluda-premiere.vercel.app/",
   },
 ];
