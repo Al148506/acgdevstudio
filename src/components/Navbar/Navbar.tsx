@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import brandLogo from "../../images/AGGDev/logo.png";
 import "./Navbar.css";
 
 const navLinks = [
@@ -69,7 +70,9 @@ function Navbar() {
     >
       <div className="site-navbar__inner">
         <a className="site-brand" href="#home" onClick={closeMenu} aria-label="ACGDevStudio, ir al inicio">
-          <span className="site-brand__mark" aria-hidden="true">ACG</span>
+          <span className="site-brand__mark" aria-hidden="true">
+            <img src={brandLogo} alt="" />
+          </span>
           <span className="site-brand__copy">
             <span className="site-brand__name">ACGDevStudio</span>
             <span className="site-brand__descriptor">Estudio web independiente</span>

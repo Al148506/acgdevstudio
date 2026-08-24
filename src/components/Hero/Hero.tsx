@@ -81,12 +81,6 @@ function Hero() {
               loading="eager"
             />
           </div>
-
-          <div className="hero-work__note" aria-hidden="true">
-            <span>Diseño</span>
-            <span>Desarrollo</span>
-            <span>Responsive</span>
-          </div>
         </div>
       </div>
     </section>

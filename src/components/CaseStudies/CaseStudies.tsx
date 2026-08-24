@@ -1,8 +1,86 @@
+import {
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type MouseEvent,
+  type TouchEvent,
+} from "react";
 import { BrowserFrame } from "../BrowserFrame/BrowserFrame";
 import { caseStudies } from "../../data/case-studies.data";
 import "./CaseStudies.css";
 
 export const CaseStudies = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState<"next" | "previous">("next");
+  const touchStart = useRef({ x: 0, y: 0 });
+  const didSwipe = useRef(false);
+  const activeProject = caseStudies[activeIndex];
+
+  const showProject = (index: number, nextDirection: "next" | "previous") => {
+    setDirection(nextDirection);
+    setActiveIndex((index + caseStudies.length) % caseStudies.length);
+  };
+
+  const showPrevious = () => showProject(activeIndex - 1, "previous");
+  const showNext = () => showProject(activeIndex + 1, "next");
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showPrevious();
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showNext();
+    }
+  };
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    didSwipe.current = false;
+    touchStart.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.changedTouches[0];
+    const horizontalDistance = touchStart.current.x - touch.clientX;
+    const verticalDistance = touchStart.current.y - touch.clientY;
+
+    if (
+      Math.abs(horizontalDistance) < 50 ||
+      Math.abs(horizontalDistance) <= Math.abs(verticalDistance)
+    ) {
+      return;
+    }
+
+    didSwipe.current = true;
+
+    if (horizontalDistance > 0) {
+      showNext();
+    } else {
+      showPrevious();
+    }
+  };
+
+  const handleProjectClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (didSwipe.current) {
+      event.preventDefault();
+      didSwipe.current = false;
+    }
+  };
+
+  const projectFrame = (
+    <BrowserFrame
+      className="case-visual"
+      src={activeProject.image}
+      alt={activeProject.imageAlt}
+      title={activeProject.frameTitle}
+      url={activeProject.frameUrl}
+      statusLabel={activeProject.frameStatus}
+    />
+  );
+
   return (
     <section
       className="cases-section"
@@ -25,72 +103,132 @@ export const CaseStudies = () => {
           </div>
         </header>
 
-        <div className="cases-list">
-          {caseStudies.map((project, index) => {
-            const projectNumber = String(index + 1).padStart(2, "0");
+        <div
+          className="cases-carousel"
+          role="region"
+          aria-roledescription="carrusel"
+          aria-label="Trabajo seleccionado"
+        >
+          <p
+            className="cases-carousel__status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            Mostrando {activeProject.title}
+          </p>
 
-            return (
-              <article
-                key={project.id}
-                className={`case-study${index % 2 === 1 ? " case-study--reverse" : ""}`}
-                aria-labelledby={`${project.id}-title`}
-              >
-                <header className="case-intro">
-                  <p className="case-number">ACG / Project {projectNumber}</p>
-                  <p className="case-type">{project.projectType}</p>
-                  <h3 id={`${project.id}-title`}>{project.title}</h3>
-                  <p className="case-context">{project.context}</p>
-                  {project.disclosure && (
-                    <p className="case-disclosure">{project.disclosure}</p>
-                  )}
-                </header>
+          <div
+            className="cases-carousel__viewport"
+            id="case-carousel-slide"
+            role="group"
+            aria-roledescription="diapositiva"
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            aria-label={`${activeProject.title}. Usa las flechas izquierda y derecha para navegar.`}
+          >
+            <article
+              key={activeProject.id}
+              className={`case-study case-study--enter-${direction}`}
+              aria-labelledby={`${activeProject.id}-title`}
+            >
+              <header className="case-intro">
+                <p className="case-type">{activeProject.projectType}</p>
+                <h3 id={`${activeProject.id}-title`}>{activeProject.title}</h3>
+                <p className="case-context">{activeProject.context}</p>
+                {activeProject.disclosure && (
+                  <p className="case-disclosure">{activeProject.disclosure}</p>
+                )}
+              </header>
 
-                <BrowserFrame
-                  className="case-visual"
-                  src={project.image}
-                  alt={project.imageAlt}
-                  title={project.frameTitle}
-                  url={project.frameUrl}
-                  statusLabel={project.frameStatus}
-                />
+              {activeProject.liveUrl ? (
+                <a
+                  className="case-visual-link"
+                  href={activeProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ver proyecto ${activeProject.title} en una nueva pestaña`}
+                  onClick={handleProjectClick}
+                >
+                  {projectFrame}
+                  <span className="case-visual-link__overlay" aria-hidden="true">
+                    <span>Ver proyecto ↗</span>
+                  </span>
+                  <span className="case-visual-link__mobile-cta" aria-hidden="true">
+                    Ver proyecto ↗
+                  </span>
+                </a>
+              ) : (
+                <div className="case-visual-wrapper">{projectFrame}</div>
+              )}
 
-                <div className="case-details">
-                  <div className="case-detail">
-                    <p className="case-detail__label">Necesidad</p>
-                    <p>{project.problem}</p>
-                  </div>
-
-                  <div className="case-detail">
-                    <p className="case-detail__label">Respuesta</p>
-                    <p>{project.solution}</p>
-                  </div>
-
-                  <div className="case-detail case-detail--delivery">
-                    <p className="case-detail__label">Entrega</p>
-                    <ul>
-                      {project.delivery.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
+              <div className="case-details">
+                <div className="case-detail">
+                  <p className="case-detail__label">Necesidad</p>
+                  <p>{activeProject.problem}</p>
                 </div>
 
-                {project.liveUrl && (
-                  <footer className="case-footer">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="case-cta"
-                      aria-label={`Ver proyecto ${project.title} en una nueva pestaña`}
-                    >
-                      Ver proyecto <span aria-hidden="true">↗</span>
-                    </a>
-                  </footer>
-                )}
-              </article>
-            );
-          })}
+                <div className="case-detail">
+                  <p className="case-detail__label">Respuesta</p>
+                  <p>{activeProject.solution}</p>
+                </div>
+
+                <div className="case-detail case-detail--delivery">
+                  <p className="case-detail__label">Entrega</p>
+                  <ul>
+                    {activeProject.delivery.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <div className="cases-carousel__controls">
+              <button
+                type="button"
+                className="cases-carousel__arrow"
+                onClick={showPrevious}
+                aria-label="Ver proyecto anterior"
+              >
+                <span aria-hidden="true">←</span>
+                <span>Anterior</span>
+              </button>
+
+              <div
+                className="cases-carousel__dots"
+                role="group"
+                aria-label="Elegir proyecto"
+              >
+                {caseStudies.map((project, index) => (
+                  <button
+                    type="button"
+                    key={project.id}
+                    className={`cases-carousel__dot${index === activeIndex ? " is-active" : ""}`}
+                    onClick={() =>
+                      showProject(
+                        index,
+                        index >= activeIndex ? "next" : "previous",
+                      )
+                    }
+                    aria-label={`Mostrar ${project.title}`}
+                    aria-current={index === activeIndex ? "true" : undefined}
+                    aria-controls="case-carousel-slide"
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                className="cases-carousel__arrow"
+                onClick={showNext}
+                aria-label="Ver proyecto siguiente"
+              >
+                <span>Siguiente</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

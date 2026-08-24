@@ -76,8 +76,7 @@ export const caseStudies: CaseStudy[] = [
     frameTitle: "La Chiluda · Concepto para restaurante",
     frameUrl: "la-chiluda-premiere.vercel.app",
     frameStatus: "Demo comercial",
-    disclosure:
-      "Concepto desarrollado como propuesta comercial; no representa un encargo contratado por el restaurante.",
+    
     problem:
       "Un restaurante necesita mostrar su propuesta, menú y ubicaciones de forma atractiva para que las personas puedan conocerlo antes de acudir.",
     solution:
