@@ -100,7 +100,8 @@
   gap: 8px;
 }
 
-.contact-field label {
+.contact-field > label,
+.contact-field > legend {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -109,8 +110,31 @@
   transition: color 0.2s;
 }
 
-.contact-field:focus-within label {
+.contact-field:focus-within > label,
+.contact-field:focus-within > legend {
   color: #4cc9f0;
+}
+
+.contact-method-field {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.contact-method-field legend {
+  margin-bottom: 8px;
+}
+
+.contact-field--dynamic {
+  animation: contact-field-enter 180ms ease-out both;
+}
+
+@keyframes contact-field-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
 }
 
 .contact-field input,
@@ -278,5 +302,11 @@
   .contact-btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-field--dynamic {
+    animation: none;
   }
 }

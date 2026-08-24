@@ -4,13 +4,15 @@ import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import "./Contact.css";
 
+type ContactMethod = "whatsapp" | "email" | "call";
+
 interface FormData {
   name: string;
   business: string;
   email: string;
   phone: string;
   service: string;
-  contactMethod: string;
+  contactMethod: ContactMethod;
   message: string;
 }
 
@@ -31,8 +33,8 @@ const serviceOptions = [
 const contactMethods = [
   { value: "whatsapp", label: "WhatsApp" },
   { value: "email", label: "Correo" },
-  { value: "phone", label: "Llamada" },
-];
+  { value: "call", label: "Llamada" },
+] satisfies { value: ContactMethod; label: string }[];
 
 export const Contact = () => {
   const { t } = useTranslation();
@@ -48,14 +50,32 @@ export const Contact = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [sending, setSending] = useState(false);
   const [touched, setTouched] = useState<Set<string>>(new Set());
+  const activeContactField =
+    formData.contactMethod === "email" ? "email" : "phone";
+  const activeContactLabel =
+    formData.contactMethod === "email"
+      ? "Correo electrónico *"
+      : formData.contactMethod === "call"
+        ? "Número de teléfono *"
+        : "Teléfono / WhatsApp *";
 
   const validate = (): FormErrors => {
     const errs: FormErrors = {};
     if (!formData.name.trim()) errs.name = "Por favor ingresa tu nombre";
-    if (!formData.email.trim()) errs.email = "Por favor ingresa tu correo electrónico";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      errs.email = "El correo no parece válido";
-    if (!formData.phone.trim()) errs.phone = "Por favor ingresa tu teléfono";
+
+    if (formData.contactMethod === "email") {
+      if (!formData.email.trim()) {
+        errs.email = "Por favor ingresa tu correo electrónico";
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        errs.email = "El correo no parece válido";
+      }
+    } else if (!formData.phone.trim()) {
+      errs.phone =
+        formData.contactMethod === "call"
+          ? "Por favor ingresa tu número de teléfono"
+          : "Por favor ingresa tu teléfono o WhatsApp";
+    }
+
     return errs;
   };
 
@@ -65,6 +85,26 @@ export const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setTouched(new Set(touched).add(e.target.name));
     setErrors({});
+  };
+
+  const handleContactMethodChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const contactMethod = e.target.value as ContactMethod;
+
+    setFormData((current) => ({ ...current, contactMethod }));
+    setTouched((current) => {
+      const next = new Set(current);
+      next.delete("email");
+      next.delete("phone");
+      return next;
+    });
+    setErrors((current) => {
+      const next = { ...current };
+      delete next.email;
+      delete next.phone;
+      return next;
+    });
   };
 
   const handleBlur = (
@@ -77,16 +117,28 @@ export const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const validation = validate();
+    setTouched((current) => {
+      const next = new Set(current);
+      next.add("name");
+      next.add(activeContactField);
+      return next;
+    });
     setErrors(validation);
     if (Object.keys(validation).length > 0) return;
 
     setSending(true);
 
+    const submissionData = {
+      ...formData,
+      email: formData.contactMethod === "email" ? formData.email : "",
+      phone: formData.contactMethod === "email" ? "" : formData.phone,
+    };
+
     emailjs
       .send(
         import.meta.env.VITE_EMAIL_SERVICE,
         import.meta.env.VITE_EMAIL_TEMPLATE,
-        formData as unknown as Record<string, unknown>,
+        submissionData as unknown as Record<string, unknown>,
         import.meta.env.VITE_EMAIL_PUBLIC_KEY,
       )
       .then(() => {
@@ -176,41 +228,6 @@ export const Contact = () => {
               </div>
             </div>
 
-            <div className="contact-row">
-              <div className="contact-field">
-                <label htmlFor="email">Correo electrónico *</label>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  placeholder="tu@correo.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={err("email") ? "field-error" : ""}
-                  required
-                  autoComplete="email"
-                />
-                {err("email") && <span className="field-error-msg">{err("email")}</span>}
-              </div>
-
-              <div className="contact-field">
-                <label htmlFor="phone">Teléfono o WhatsApp *</label>
-                <input
-                  id="phone"
-                  type="tel"
-                  name="phone"
-                  placeholder="+52 555 123 4567"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={err("phone") ? "field-error" : ""}
-                  autoComplete="tel"
-                />
-                {err("phone") && <span className="field-error-msg">{err("phone")}</span>}
-              </div>
-            </div>
-
             <div className="contact-field">
               <label htmlFor="service">Servicio de interés</label>
               <select
@@ -226,8 +243,8 @@ export const Contact = () => {
               </select>
             </div>
 
-            <div className="contact-field">
-              <label>Método de contacto preferido</label>
+            <fieldset className="contact-field contact-method-field">
+              <legend>Método de contacto preferido *</legend>
               <div className="contact-methods">
                 {contactMethods.map((m) => (
                   <label key={m.value} className="contact-method-label">
@@ -236,12 +253,50 @@ export const Contact = () => {
                       name="contactMethod"
                       value={m.value}
                       checked={formData.contactMethod === m.value}
-                      onChange={handleChange}
+                      onChange={handleContactMethodChange}
+                      required
                     />
                     <span>{m.label}</span>
                   </label>
                 ))}
               </div>
+            </fieldset>
+
+            <div
+              key={formData.contactMethod}
+              className="contact-field contact-field--dynamic"
+            >
+              <label htmlFor={activeContactField}>{activeContactLabel}</label>
+              <input
+                id={activeContactField}
+                type={activeContactField === "email" ? "email" : "tel"}
+                name={activeContactField}
+                placeholder={
+                  activeContactField === "email"
+                    ? "tu@correo.com"
+                    : "+52 555 123 4567"
+                }
+                value={formData[activeContactField]}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={err(activeContactField) ? "field-error" : ""}
+                required
+                autoComplete={activeContactField === "email" ? "email" : "tel"}
+                aria-invalid={Boolean(err(activeContactField))}
+                aria-describedby={
+                  err(activeContactField)
+                    ? `${activeContactField}-error`
+                    : undefined
+                }
+              />
+              {err(activeContactField) && (
+                <span
+                  className="field-error-msg"
+                  id={`${activeContactField}-error`}
+                >
+                  {err(activeContactField)}
+                </span>
+              )}
             </div>
 
             <div className="contact-field">
