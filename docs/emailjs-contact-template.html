@@ -1,0 +1,62 @@
+<div style="font-family: 'Segoe UI', system-ui, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #08111d; padding: 24px; border-radius: 12px;">
+  <div style="background-color: #4361ee; border-radius: 8px 8px 0 0; padding: 24px 28px;">
+    <p style="margin: 0; font-size: 11px; color: #dce4ff; text-transform: uppercase; letter-spacing: 1px;">Nueva consulta de proyecto</p>
+    <h1 style="margin: 6px 0 0; font-size: 22px; color: #ffffff; font-weight: 600;">{{cliente_nombre}}</h1>
+  </div>
+
+  <div style="background-color: #ffffff; padding: 20px 28px; border-left: 4px solid #f07b4c;">
+    <p style="margin: 0; font-size: 14px; color: #4b5563; line-height: 1.6;">
+      Has recibido una nueva solicitud desde el formulario de ACGDevStudio.
+    </p>
+  </div>
+
+  <div style="background-color: #ffffff; padding: 24px 28px; margin-top: 2px;">
+    <p style="margin: 0 0 16px; font-size: 11px; font-weight: 700; color: #4361ee; text-transform: uppercase; letter-spacing: 1px;">Datos de contacto</p>
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="padding: 8px 0; width: 40%; font-size: 12px; color: #6b7280; vertical-align: top;">Nombre</td>
+        <td style="padding: 8px 0; font-size: 14px; color: #111827; font-weight: 600;">{{cliente_nombre}}</td>
+      </tr>
+      <tr style="border-top: 1px solid #e5e7eb;">
+        <td style="padding: 8px 0; font-size: 12px; color: #6b7280; vertical-align: top;">Negocio</td>
+        <td style="padding: 8px 0; font-size: 14px; color: #111827; font-weight: 500;">{{negocio}}</td>
+      </tr>
+      <tr style="border-top: 1px solid #e5e7eb;">
+        <td style="padding: 8px 0; font-size: 12px; color: #6b7280; vertical-align: top;">Método preferido</td>
+        <td style="padding: 8px 0; font-size: 14px; color: #111827; font-weight: 500;">{{metodo_contacto}}</td>
+      </tr>
+      <tr style="border-top: 1px solid #e5e7eb;">
+        <td style="padding: 8px 0; font-size: 12px; color: #6b7280; vertical-align: top;">{{contacto_etiqueta}}</td>
+        <td style="padding: 8px 0; font-size: 14px; color: #111827; font-weight: 600;">{{cliente_contacto}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="background-color: #ffffff; padding: 24px 28px; margin-top: 2px;">
+    <p style="margin: 0 0 16px; font-size: 11px; font-weight: 700; color: #4361ee; text-transform: uppercase; letter-spacing: 1px;">Detalles del proyecto</p>
+    <table role="presentation" style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="padding: 8px 0; width: 40%; font-size: 12px; color: #6b7280; vertical-align: top;">Servicio de interés</td>
+        <td style="padding: 8px 0; font-size: 14px; color: #111827; font-weight: 600;">{{tipo_proyecto}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="background-color: #ffffff; padding: 24px 28px; margin-top: 2px;">
+    <p style="margin: 0 0 12px; font-size: 11px; font-weight: 700; color: #4361ee; text-transform: uppercase; letter-spacing: 1px;">Mensaje</p>
+    <p style="margin: 0; padding: 14px 16px; border-left: 3px solid #f07b4c; border-radius: 6px; background-color: #f4f7ff; font-size: 14px; color: #111827; line-height: 1.7; white-space: pre-wrap;">{{mensaje}}</p>
+  </div>
+
+  <div style="background-color: #ffffff; padding: 20px 28px 28px; margin-top: 2px; border-radius: 0 0 8px 8px; text-align: center;">
+    <a href="{{contacto_url}}" style="display: inline-block; background-color: #4361ee; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 6px;">
+      Contactar a {{cliente_nombre}}
+    </a>
+  </div>
+
+  <div style="margin-top: 20px; text-align: center;">
+    <p style="margin: 0; font-size: 11px; color: #8da0b8; line-height: 1.6;">
+      Correo generado automáticamente desde el formulario de contacto de<br>
+      <strong style="color: #ffffff;">ACGDevStudio — Estudio web independiente</strong>
+    </p>
+  </div>
+</div>

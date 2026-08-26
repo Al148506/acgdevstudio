@@ -36,6 +36,46 @@ const contactMethods = [
   { value: "call", label: "Llamada" },
 ] satisfies { value: ContactMethod; label: string }[];
 
+const contactMethodLabels: Record<ContactMethod, string> = {
+  whatsapp: "WhatsApp",
+  email: "Correo electrónico",
+  call: "Llamada",
+};
+
+const getContactUrl = (method: ContactMethod, value: string) => {
+  if (method === "email") return `mailto:${value}`;
+  if (method === "whatsapp") return `https://wa.me/${value.replace(/\D/g, "")}`;
+
+  return `tel:${value.replace(/[^\d+]/g, "")}`;
+};
+
+const emailConfig = {
+  serviceId: import.meta.env.VITE_EMAIL_SERVICE,
+  templateId: import.meta.env.VITE_EMAIL_TEMPLATE,
+  publicKey: import.meta.env.VITE_EMAIL_PUBLIC_KEY,
+};
+
+const getEmailErrorDetails = (error: unknown) => {
+  if (typeof error === "string") {
+    return { status: null, message: error.slice(0, 300) };
+  }
+
+  if (error && typeof error === "object") {
+    const failure = error as { status?: unknown; text?: unknown; message?: unknown };
+    const status = typeof failure.status === "number" ? failure.status : null;
+    const rawMessage =
+      typeof failure.text === "string"
+        ? failure.text
+        : typeof failure.message === "string"
+          ? failure.message
+          : "Error desconocido del servicio de correo";
+
+    return { status, message: rawMessage.slice(0, 300) };
+  }
+
+  return { status: null, message: "Error desconocido del servicio de correo" };
+};
+
 export const Contact = () => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
@@ -128,18 +168,60 @@ export const Contact = () => {
 
     setSending(true);
 
+    const contactValue =
+      formData.contactMethod === "email" ? formData.email.trim() : formData.phone.trim();
+    const selectedService = serviceOptions.find(
+      ({ value }) => value === formData.service,
+    );
     const submissionData = {
       ...formData,
-      email: formData.contactMethod === "email" ? formData.email : "",
-      phone: formData.contactMethod === "email" ? "" : formData.phone,
+      email: formData.contactMethod === "email" ? contactValue : "",
+      phone: formData.contactMethod === "email" ? "" : contactValue,
+      cliente_nombre: formData.name.trim(),
+      negocio: formData.business.trim() || "No especificado",
+      metodo_contacto: contactMethodLabels[formData.contactMethod],
+      contacto_etiqueta:
+        formData.contactMethod === "email"
+          ? "Correo electrónico"
+          : formData.contactMethod === "call"
+            ? "Número de teléfono"
+            : "Teléfono / WhatsApp",
+      cliente_contacto: contactValue,
+      contacto_url: getContactUrl(formData.contactMethod, contactValue),
+      tipo_proyecto: selectedService?.label ?? "No especificado",
+      mensaje: formData.message.trim() || "Sin mensaje adicional",
+      reply_to: formData.contactMethod === "email" ? contactValue : "",
     };
+
+    const missingEmailConfig = Object.entries(emailConfig)
+      .filter(([, value]) => !value)
+      .map(([name]) => name);
+
+    if (missingEmailConfig.length > 0) {
+      console.error("[Contact] Configuración de EmailJS incompleta", {
+        missing: missingEmailConfig,
+      });
+      setSending(false);
+      Swal.fire({
+        icon: "error",
+        title: t("contact.errorTitle"),
+        text: t("contact.errorText"),
+        background: "#0d1b2a",
+        color: "#f0f6ff",
+        iconColor: "#f07b4c",
+        confirmButtonColor: "#4361ee",
+        confirmButtonText: t("contact.errorBtn"),
+        customClass: { popup: "swal-contact-popup" },
+      });
+      return;
+    }
 
     emailjs
       .send(
-        import.meta.env.VITE_EMAIL_SERVICE,
-        import.meta.env.VITE_EMAIL_TEMPLATE,
+        emailConfig.serviceId,
+        emailConfig.templateId,
         submissionData as unknown as Record<string, unknown>,
-        import.meta.env.VITE_EMAIL_PUBLIC_KEY,
+        emailConfig.publicKey,
       )
       .then(() => {
         Swal.fire({
@@ -162,7 +244,11 @@ export const Contact = () => {
         });
         setTouched(new Set());
       })
-      .catch(() => {
+      .catch((error: unknown) => {
+        console.error(
+          "[Contact] Error al enviar con EmailJS",
+          getEmailErrorDetails(error),
+        );
         Swal.fire({
           icon: "error",
           title: t('contact.errorTitle'),
