@@ -51,7 +51,8 @@ export default function Footer() {
         <div className="footer-brand">
           <p className="footer-name">ACGDevStudio</p>
           <p className="footer-tagline">
-            Sitios web profesionales para negocios locales.
+            Diseño y desarrollo web para negocios locales y profesionales
+            independientes en Aguascalientes, México.
           </p>
 
           <div className="footer-cta">

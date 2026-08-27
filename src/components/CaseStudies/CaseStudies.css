@@ -196,6 +196,11 @@
   padding: clamp(1.5rem, 2vw, 2rem) 0 clamp(3rem, 6vw, 5.5rem);
 }
 
+/* Keep all project content mounted without displaying inactive slides. */
+.case-study[hidden] {
+  display: none;
+}
+
 .case-study--enter-next {
   animation: case-enter-next 360ms ease-out both;
 }

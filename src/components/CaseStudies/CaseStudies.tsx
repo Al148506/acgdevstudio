@@ -14,9 +14,18 @@ export const CaseStudies = () => {
   const [direction, setDirection] = useState<"next" | "previous">("next");
   const touchStart = useRef({ x: 0, y: 0 });
   const didSwipe = useRef(false);
+  const viewportRef = useRef<HTMLDivElement>(null);
   const activeProject = caseStudies[activeIndex];
 
   const showProject = (index: number, nextDirection: "next" | "previous") => {
+    // Keep focus visible if an arrow key hides the currently focused preview.
+    if (
+      document.activeElement instanceof HTMLElement &&
+      viewportRef.current?.contains(document.activeElement) &&
+      document.activeElement.closest(".case-study")
+    ) {
+      viewportRef.current.focus({ preventScroll: true });
+    }
     setDirection(nextDirection);
     setActiveIndex((index + caseStudies.length) % caseStudies.length);
   };
@@ -70,17 +79,6 @@ export const CaseStudies = () => {
     }
   };
 
-  const projectFrame = (
-    <BrowserFrame
-      className="case-visual"
-      src={activeProject.image}
-      alt={activeProject.imageAlt}
-      title={activeProject.frameTitle}
-      url={activeProject.frameUrl}
-      statusLabel={activeProject.frameStatus}
-    />
-  );
-
   return (
     <section
       className="cases-section"
@@ -118,6 +116,7 @@ export const CaseStudies = () => {
           </p>
 
           <div
+            ref={viewportRef}
             className="cases-carousel__viewport"
             id="case-carousel-slide"
             role="group"
@@ -128,62 +127,82 @@ export const CaseStudies = () => {
             onTouchEnd={handleTouchEnd}
             aria-label={`${activeProject.title}. Usa las flechas izquierda y derecha para navegar.`}
           >
-            <article
-              key={activeProject.id}
-              className={`case-study case-study--enter-${direction}`}
-              aria-labelledby={`${activeProject.id}-title`}
-            >
-              <header className="case-intro">
-                <p className="case-type">{activeProject.projectType}</p>
-                <h3 id={`${activeProject.id}-title`}>{activeProject.title}</h3>
-                <p className="case-context">{activeProject.context}</p>
-                {activeProject.disclosure && (
-                  <p className="case-disclosure">{activeProject.disclosure}</p>
-                )}
-              </header>
+            {caseStudies.map((project, index) => {
+              const isActive = index === activeIndex;
+              const projectFrame = (
+                <BrowserFrame
+                  className="case-visual"
+                  src={project.image}
+                  alt={project.imageAlt}
+                  title={project.frameTitle}
+                  url={project.frameUrl}
+                  statusLabel={project.frameStatus}
+                />
+              );
 
-              {activeProject.liveUrl ? (
-                <a
-                  className="case-visual-link"
-                  href={activeProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Ver proyecto ${activeProject.title} en una nueva pestaña`}
-                  onClick={handleProjectClick}
+              return (
+                <article
+                  key={project.id}
+                  className={`case-study${isActive ? ` case-study--enter-${direction}` : ""}`}
+                  aria-labelledby={`${project.id}-title`}
+                  hidden={!isActive}
+                  inert={!isActive}
+                  aria-hidden={!isActive}
                 >
-                  {projectFrame}
-                  <span className="case-visual-link__overlay" aria-hidden="true">
-                    <span>Ver proyecto ↗</span>
-                  </span>
-                  <span className="case-visual-link__mobile-cta" aria-hidden="true">
-                    Ver proyecto ↗
-                  </span>
-                </a>
-              ) : (
-                <div className="case-visual-wrapper">{projectFrame}</div>
-              )}
+                  <header className="case-intro">
+                    <p className="case-type">{project.projectType}</p>
+                    <h3 id={`${project.id}-title`}>{project.title}</h3>
+                    <p className="case-context">{project.context}</p>
+                    {project.disclosure && (
+                      <p className="case-disclosure">{project.disclosure}</p>
+                    )}
+                  </header>
 
-              <div className="case-details">
-                <div className="case-detail">
-                  <p className="case-detail__label">Necesidad</p>
-                  <p>{activeProject.problem}</p>
-                </div>
+                  {project.liveUrl ? (
+                    <a
+                      className="case-visual-link"
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Ver proyecto ${project.title} en una nueva pestaña`}
+                      tabIndex={isActive ? undefined : -1}
+                      onClick={handleProjectClick}
+                    >
+                      {projectFrame}
+                      <span className="case-visual-link__overlay" aria-hidden="true">
+                        <span>Ver proyecto ↗</span>
+                      </span>
+                      <span className="case-visual-link__mobile-cta" aria-hidden="true">
+                        Ver proyecto ↗
+                      </span>
+                    </a>
+                  ) : (
+                    <div className="case-visual-wrapper">{projectFrame}</div>
+                  )}
 
-                <div className="case-detail">
-                  <p className="case-detail__label">Respuesta</p>
-                  <p>{activeProject.solution}</p>
-                </div>
+                  <div className="case-details">
+                    <div className="case-detail">
+                      <p className="case-detail__label">Necesidad</p>
+                      <p>{project.problem}</p>
+                    </div>
 
-                <div className="case-detail case-detail--delivery">
-                  <p className="case-detail__label">Entrega</p>
-                  <ul>
-                    {activeProject.delivery.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </article>
+                    <div className="case-detail">
+                      <p className="case-detail__label">Respuesta</p>
+                      <p>{project.solution}</p>
+                    </div>
+
+                    <div className="case-detail case-detail--delivery">
+                      <p className="case-detail__label">Entrega</p>
+                      <ul>
+                        {project.delivery.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
             <div className="cases-carousel__controls">
               <button
                 type="button"
