@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import brandLogo from "../../images/AGGDev/logo.png";
+import brandLogo from "../../images/optimized/logo-nav-64.webp";
+import brandLogoRetina from "../../images/optimized/logo-nav-128.webp";
 import "./Navbar.css";
 
 const navLinks = [
@@ -71,7 +72,8 @@ function Navbar() {
       <div className="site-navbar__inner">
         <a className="site-brand" href="#home" onClick={closeMenu} aria-label="ACGDevStudio, ir al inicio">
           <span className="site-brand__mark" aria-hidden="true">
-            <img src={brandLogo} alt="" />
+            <img src={brandLogo} srcSet={`${brandLogo} 1x, ${brandLogoRetina} 2x`}
+              width={64} height={51} alt="" />
           </span>
           <span className="site-brand__copy">
             <span className="site-brand__name">ACGDevStudio</span>

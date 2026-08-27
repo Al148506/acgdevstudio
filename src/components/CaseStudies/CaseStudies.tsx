@@ -132,7 +132,8 @@ export const CaseStudies = () => {
               const projectFrame = (
                 <BrowserFrame
                   className="case-visual"
-                  src={project.image}
+                  {...project.image}
+                  sizes="(max-width: 660px) calc(100vw - 48px), (max-width: 900px) calc(100vw - 80px), 730px"
                   alt={project.imageAlt}
                   title={project.frameTitle}
                   url={project.frameUrl}

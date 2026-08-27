@@ -1,3 +1,4 @@
+import { useSyncExternalStore } from "react";
 import "./Footer.css";
 
 const phoneNumber = "524495865567";
@@ -42,7 +43,13 @@ const navLinks = [
   { href: "#contact", label: "Contacto" },
 ];
 
+const subscribeToYear = () => () => {};
+const readYear = () => new Date().getFullYear();
+const readBuildYear = () => __BUILD_YEAR__;
+
 export default function Footer() {
+  // Hydration matches the build snapshot, then uses the visitor's current year.
+  const year = useSyncExternalStore(subscribeToYear, readYear, readBuildYear);
   return (
     <footer className="footer">
       <div className="footer-topline" />
@@ -111,7 +118,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <span>
-          © {new Date().getFullYear()} ACGDevStudio. Todos los derechos
+          © {year} ACGDevStudio. Todos los derechos
           reservados.
         </span>
       </div>

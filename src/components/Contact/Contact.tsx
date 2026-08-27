@@ -281,7 +281,7 @@ export const Contact = () => {
         <div className="contact-card">
           <div className="contact-card__glow" />
 
-          <form className="contact-form" onSubmit={handleSubmit} noValidate>
+          <form className="contact-form" method="post" onSubmit={handleSubmit} noValidate>
 
             <div className="contact-row">
               <div className="contact-field">

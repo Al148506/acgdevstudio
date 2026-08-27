@@ -1,7 +1,5 @@
 import { BrowserFrame } from "../BrowserFrame/BrowserFrame";
-import inredtelecomWork from "../../images/Inredtelecom/03OurWorks.png";
-import laChiludaHome from "../../images/RestaurantDemo/01HomePage.png";
-import marthaPortfolio from "../../images/LandingPageMartha/01HomePage.png";
+import { projectImages } from "../../data/project-images";
 import "./Hero.css";
 
 function Hero() {
@@ -53,7 +51,9 @@ function Hero() {
           <div className="hero-work__frames">
             <BrowserFrame
               className="hero-work__primary"
-              src={laChiludaHome}
+              {...projectImages.chiluda}
+              sizes="(max-width: 600px) calc(100vw - 46px), (max-width: 900px) 580px, 510px"
+              fetchPriority="high"
               alt="Página principal de la demo comercial para La Chiluda Seafood & Bar"
               title="La Chiluda · Concepto para restaurante"
               url="la-chiluda-premiere.vercel.app"
@@ -63,7 +63,8 @@ function Hero() {
 
             <BrowserFrame
               className="hero-work__secondary"
-              src={marthaPortfolio}
+              {...projectImages.martha}
+              sizes="(max-width: 390px) 78vw, (max-width: 600px) 73vw, (max-width: 900px) 320px, 285px"
               alt="Página principal del portfolio web desarrollado para la diseñadora Martha García"
               title="Martha García · Portfolio"
               url="portfolio-martha.vercel.app"
@@ -73,7 +74,8 @@ function Hero() {
 
             <BrowserFrame
               className="hero-work__tertiary"
-              src={inredtelecomWork}
+              {...projectImages.inredWork}
+              sizes="(max-width: 390px) 78vw, (max-width: 600px) 73vw, (max-width: 900px) 320px, 285px"
               alt="Galería de trabajos del sitio corporativo desarrollado para Inredtelecom"
               title="Inredtelecom · Sitio corporativo"
               url="inredtelecom.vercel.app"

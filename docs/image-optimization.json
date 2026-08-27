@@ -1,0 +1,162 @@
+[
+  {
+    "asset": "chiluda-400.webp",
+    "format": "webp",
+    "width": 400,
+    "height": 191,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 9426
+  },
+  {
+    "asset": "chiluda-640.webp",
+    "format": "webp",
+    "width": 640,
+    "height": 305,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 19512
+  },
+  {
+    "asset": "chiluda-960.webp",
+    "format": "webp",
+    "width": 960,
+    "height": 458,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 35478
+  },
+  {
+    "asset": "chiluda-1440.webp",
+    "format": "webp",
+    "width": 1440,
+    "height": 687,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 62658
+  },
+  {
+    "asset": "martha-400.webp",
+    "format": "webp",
+    "width": 400,
+    "height": 191,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 6102
+  },
+  {
+    "asset": "martha-640.webp",
+    "format": "webp",
+    "width": 640,
+    "height": 305,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 11888
+  },
+  {
+    "asset": "martha-960.webp",
+    "format": "webp",
+    "width": 960,
+    "height": 458,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 21672
+  },
+  {
+    "asset": "martha-1440.webp",
+    "format": "webp",
+    "width": 1440,
+    "height": 687,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 37226
+  },
+  {
+    "asset": "inred-home-400.webp",
+    "format": "webp",
+    "width": 400,
+    "height": 160,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 5748
+  },
+  {
+    "asset": "inred-home-640.webp",
+    "format": "webp",
+    "width": 640,
+    "height": 256,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 11214
+  },
+  {
+    "asset": "inred-home-960.webp",
+    "format": "webp",
+    "width": 960,
+    "height": 384,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 21324
+  },
+  {
+    "asset": "inred-home-1339.webp",
+    "format": "webp",
+    "width": 1339,
+    "height": 536,
+    "channels": 4,
+    "premultiplied": false,
+    "hasAlpha": true,
+    "size": 36168
+  },
+  {
+    "asset": "inred-work-400.webp",
+    "format": "webp",
+    "width": 400,
+    "height": 284,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 22706
+  },
+  {
+    "asset": "inred-work-682.webp",
+    "format": "webp",
+    "width": 682,
+    "height": 485,
+    "channels": 4,
+    "premultiplied": false,
+    "hasAlpha": true,
+    "size": 48824
+  },
+  {
+    "asset": "logo-nav-64.webp",
+    "format": "webp",
+    "width": 64,
+    "height": 51,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 3612
+  },
+  {
+    "asset": "logo-nav-128.webp",
+    "format": "webp",
+    "width": 128,
+    "height": 102,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 9510
+  }
+]

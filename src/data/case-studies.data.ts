@@ -1,13 +1,11 @@
-import inredtelecom from "../images/Inredtelecom/01HomePage.png";
-import landingPageMartha from "../images/LandingPageMartha/01HomePage.png";
-import laChiluda from "../images/RestaurantDemo/01HomePage.png";
+import { projectImages, type ResponsiveImage } from "./project-images";
 
 export interface CaseStudy {
   id: string;
   title: string;
   projectType: string;
   context: string;
-  image: string;
+  image: ResponsiveImage;
   imageAlt: string;
   frameTitle: string;
   frameUrl: string;
@@ -26,7 +24,7 @@ export const caseStudies: CaseStudy[] = [
     projectType: "Sitio web corporativo",
     context:
       "Una presencia digital para explicar los servicios de la empresa y reunir su trabajo en un solo lugar.",
-    image: inredtelecom,
+    image: projectImages.inredHome,
     imageAlt:
       "Página del sitio corporativo de Inredtelecom con información de la empresa, sus valores y servicios",
     frameTitle: "Inredtelecom · Sitio corporativo",
@@ -48,7 +46,7 @@ export const caseStudies: CaseStudy[] = [
     projectType: "Portfolio profesional",
     context:
       "Un sitio propio para presentar su perfil como diseñadora y dar protagonismo a su trabajo creativo.",
-    image: landingPageMartha,
+    image: projectImages.martha,
     imageAlt:
       "Página principal del portfolio de Martha García con su propuesta como diseñadora gráfica y accesos al portfolio y contacto",
     frameTitle: "Martha García · Portfolio",
@@ -70,7 +68,7 @@ export const caseStudies: CaseStudy[] = [
     projectType: "Demo comercial · Concepto para restaurante",
     context:
       "Una demostración de cómo un restaurante puede presentar su ambiente, sus platillos y la información necesaria antes de una visita.",
-    image: laChiluda,
+    image: projectImages.chiluda,
     imageAlt:
       "Página principal de la demo para La Chiluda Seafood & Bar con fotografía de platillos, acceso al menú y reserva por WhatsApp",
     frameTitle: "La Chiluda · Concepto para restaurante",

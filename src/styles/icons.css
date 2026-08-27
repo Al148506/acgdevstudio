@@ -1,0 +1,19 @@
+/* Same Bootstrap SVG artwork; only icons with existing consumers are included.
+   Avoid the missing font files and downloading the complete icon font/catalog. */
+.bi::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  background-color: currentColor;
+  mask: var(--bi-icon) center / contain no-repeat;
+}
+.bi-chevron-down { --bi-icon: url('bootstrap-icons/icons/chevron-down.svg'); }
+.bi-chat-square-text { --bi-icon: url('bootstrap-icons/icons/chat-square-text.svg'); }
+.bi-rocket-takeoff { --bi-icon: url('bootstrap-icons/icons/rocket-takeoff.svg'); }
+.bi-headset { --bi-icon: url('bootstrap-icons/icons/headset.svg'); }
+.bi-box-arrow-up-right { --bi-icon: url('bootstrap-icons/icons/box-arrow-up-right.svg'); }
+.bi-x-lg { --bi-icon: url('bootstrap-icons/icons/x-lg.svg'); }
+.bi-bullseye { --bi-icon: url('bootstrap-icons/icons/bullseye.svg'); }
+.bi-tools { --bi-icon: url('bootstrap-icons/icons/tools.svg'); }

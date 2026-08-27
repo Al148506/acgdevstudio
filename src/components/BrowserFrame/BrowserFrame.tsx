@@ -2,6 +2,11 @@ import "./BrowserFrame.css";
 
 interface BrowserFrameProps {
   src: string;
+  srcSet?: string;
+  sizes?: string;
+  width?: number;
+  height?: number;
+  fetchPriority?: "high" | "low" | "auto";
   alt: string;
   title: string;
   url?: string;
@@ -13,6 +18,11 @@ interface BrowserFrameProps {
 
 export const BrowserFrame = ({
   src,
+  srcSet,
+  sizes,
+  width,
+  height,
+  fetchPriority,
   alt,
   title,
   url = "proyecto.acgdevstudio",
@@ -34,7 +44,8 @@ export const BrowserFrame = ({
       </div>
 
       <div className="browser-frame__viewport">
-        <img src={src} alt={alt} loading={loading} decoding="async" />
+        <img src={src} srcSet={srcSet} sizes={sizes} width={width} height={height}
+          fetchPriority={fetchPriority} alt={alt} loading={loading} decoding="async" />
       </div>
 
       <figcaption className="browser-frame__caption">
