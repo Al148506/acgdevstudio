@@ -22,6 +22,8 @@ interface FormErrors {
   phone?: string;
 }
 
+type ValidatedField = keyof FormErrors;
+
 const serviceOptions = [
   { value: "landing", label: "Landing Page" },
   { value: "corporate", label: "Sitio Web Corporativo" },
@@ -53,6 +55,54 @@ const emailConfig = {
   serviceId: import.meta.env.VITE_EMAIL_SERVICE,
   templateId: import.meta.env.VITE_EMAIL_TEMPLATE,
   publicKey: import.meta.env.VITE_EMAIL_PUBLIC_KEY,
+};
+
+const isValidatedField = (field: string): field is ValidatedField =>
+  field === "name" || field === "email" || field === "phone";
+
+const validateField = (
+  field: ValidatedField,
+  data: FormData,
+): string | undefined => {
+  if (field === "name") {
+    return data.name.trim() ? undefined : "Por favor ingresa tu nombre";
+  }
+
+  if (field === "email") {
+    if (data.contactMethod !== "email") return undefined;
+    if (!data.email.trim()) return "Por favor ingresa tu correo electrónico";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      return "El correo no parece válido";
+    }
+    return undefined;
+  }
+
+  if (data.contactMethod === "email") return undefined;
+  if (!data.phone.trim()) {
+    return data.contactMethod === "call"
+      ? "Por favor ingresa tu número de teléfono"
+      : "Por favor ingresa tu teléfono o WhatsApp";
+  }
+
+  const digitCount = data.phone.replace(/\D/g, "").length;
+  if (digitCount < 10 || digitCount > 15) {
+    return "Ingresa un teléfono válido de 10 a 15 dígitos";
+  }
+
+  return undefined;
+};
+
+const validateForm = (data: FormData): FormErrors => {
+  const fields: ValidatedField[] = [
+    "name",
+    data.contactMethod === "email" ? "email" : "phone",
+  ];
+
+  return fields.reduce<FormErrors>((result, field) => {
+    const fieldError = validateField(field, data);
+    if (fieldError) result[field] = fieldError;
+    return result;
+  }, {});
 };
 
 const getEmailErrorDetails = (error: unknown) => {
@@ -99,32 +149,26 @@ export const Contact = () => {
         ? "Número de teléfono *"
         : "Teléfono / WhatsApp *";
 
-  const validate = (): FormErrors => {
-    const errs: FormErrors = {};
-    if (!formData.name.trim()) errs.name = "Por favor ingresa tu nombre";
-
-    if (formData.contactMethod === "email") {
-      if (!formData.email.trim()) {
-        errs.email = "Por favor ingresa tu correo electrónico";
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-        errs.email = "El correo no parece válido";
-      }
-    } else if (!formData.phone.trim()) {
-      errs.phone =
-        formData.contactMethod === "call"
-          ? "Por favor ingresa tu número de teléfono"
-          : "Por favor ingresa tu teléfono o WhatsApp";
-    }
-
-    return errs;
-  };
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setTouched(new Set(touched).add(e.target.name));
-    setErrors({});
+    const { name, value } = e.target;
+    const nextFormData = { ...formData, [name]: value };
+
+    setFormData(nextFormData);
+    setTouched((current) => new Set(current).add(name));
+
+    if (isValidatedField(name)) {
+      setErrors((current) => {
+        const next = { ...current };
+        const fieldError = validateField(name, nextFormData);
+
+        if (fieldError && current[name]) next[name] = fieldError;
+        else delete next[name];
+
+        return next;
+      });
+    }
   };
 
   const handleContactMethodChange = (
@@ -150,13 +194,25 @@ export const Contact = () => {
   const handleBlur = (
     e: React.FocusEvent<HTMLInputElement>,
   ) => {
-    setTouched(new Set(touched).add(e.target.name));
-    setErrors(validate());
+    const { name } = e.target;
+    setTouched((current) => new Set(current).add(name));
+
+    if (isValidatedField(name)) {
+      setErrors((current) => {
+        const next = { ...current };
+        const fieldError = validateField(name, formData);
+
+        if (fieldError) next[name] = fieldError;
+        else delete next[name];
+
+        return next;
+      });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const validation = validate();
+    const validation = validateForm(formData);
     setTouched((current) => {
       const next = new Set(current);
       next.add("name");
@@ -281,7 +337,13 @@ export const Contact = () => {
         <div className="contact-card">
           <div className="contact-card__glow" />
 
-          <form className="contact-form" method="post" onSubmit={handleSubmit} noValidate>
+          <form
+            className="contact-form"
+            method="post"
+            onSubmit={handleSubmit}
+            noValidate
+            aria-busy={sending}
+          >
 
             <div className="contact-row">
               <div className="contact-field">
@@ -297,8 +359,18 @@ export const Contact = () => {
                   className={err("name") ? "field-error" : ""}
                   required
                   autoComplete="name"
+                  aria-invalid={Boolean(err("name"))}
+                  aria-describedby={err("name") ? "name-error" : undefined}
                 />
-                {err("name") && <span className="field-error-msg">{err("name")}</span>}
+                {err("name") && (
+                  <span
+                    className="field-error-msg"
+                    id="name-error"
+                    aria-live="polite"
+                  >
+                    {err("name")}
+                  </span>
+                )}
               </div>
 
               <div className="contact-field">
@@ -379,6 +451,7 @@ export const Contact = () => {
                 <span
                   className="field-error-msg"
                   id={`${activeContactField}-error`}
+                  aria-live="polite"
                 >
                   {err(activeContactField)}
                 </span>
@@ -401,10 +474,11 @@ export const Contact = () => {
               type="submit"
               className={`contact-btn${sending ? " contact-btn--sending" : ""}`}
               disabled={sending}
+              aria-busy={sending}
             >
               {sending ? (
                 <>
-                  <span className="contact-btn__spinner" />
+                  <span className="contact-btn__spinner" aria-hidden="true" />
                   Enviando…
                 </>
               ) : (
@@ -416,6 +490,10 @@ export const Contact = () => {
                 </>
               )}
             </button>
+
+            <span className="contact-status" role="status" aria-live="polite">
+              {sending ? "Enviando solicitud" : ""}
+            </span>
 
           </form>
         </div>
