@@ -12,6 +12,7 @@ const sources = [
   ['martha', 'LandingPageMartha/01HomePage.png', [400, 640, 960, 1440]],
   ['inred-home', 'Inredtelecom/01HomePage.png', [400, 640, 960, 1339]],
   ['inred-work', 'Inredtelecom/03OurWorks.png', [400, 682]],
+  ['alejandro', '../assets/Foto_CV.png', [400, 640, 960]],
 ];
 const report = [];
 for (const [name, source, widths] of sources) {

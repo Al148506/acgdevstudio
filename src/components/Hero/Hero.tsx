@@ -1,5 +1,6 @@
-import { BrowserFrame } from "../BrowserFrame/BrowserFrame";
-import { projectImages } from "../../data/project-images";
+import alejandro400 from "../../images/optimized/alejandro-400.webp";
+import alejandro640 from "../../images/optimized/alejandro-640.webp";
+import alejandro960 from "../../images/optimized/alejandro-960.webp";
 import "./Hero.css";
 
 function Hero() {
@@ -16,8 +17,9 @@ function Hero() {
           </h1>
 
           <p className="hero-description">
-            Creo sitios web profesionales para ayudarte a destacar y conectar
-            con más clientes.
+            Creo sitios web claros y profesionales para que tu negocio presente
+            mejor sus servicios, genere confianza y facilite el contacto con
+            nuevos clientes.
           </p>
 
           <p className="hero-capabilities">
@@ -39,51 +41,37 @@ function Hero() {
           </p>
         </div>
 
-        <div
-          className="hero-work"
-          aria-label="Muestra de proyectos y conceptos realizados"
-        >
-          <div className="hero-work__meta" aria-hidden="true">
-            <span>ACG / 01—03</span>
-            <span>PROYECTOS SELECCIONADOS</span>
+        <figure className="hero-profile">
+          <div className="hero-profile__meta" aria-hidden="true">
+            <span>ACG / PERFIL</span>
+            <span>ATENCIÓN DIRECTA</span>
           </div>
 
-          <div className="hero-work__frames">
-            <BrowserFrame
-              className="hero-work__primary"
-              {...projectImages.chiluda}
-              sizes="(max-width: 600px) calc(100vw - 46px), (max-width: 900px) 580px, 510px"
+          <div className="hero-profile__portrait">
+            <img
+              src={alejandro640}
+              srcSet={`${alejandro400} 400w, ${alejandro640} 640w, ${alejandro960} 960w`}
+              sizes="(max-width: 600px) calc(100vw - 48px), (max-width: 900px) 430px, 464px"
+              width="1024"
+              height="1028"
               fetchPriority="high"
-              alt="Página principal de la demo comercial para La Chiluda Seafood & Bar"
-              title="La Chiluda · Concepto para restaurante"
-              url="la-chiluda-premiere.vercel.app"
-              statusLabel="Demo comercial"
+              alt="Retrato profesional de Alejandro Castañeda, desarrollador web de ACGDevStudio"
               loading="eager"
-            />
-
-            <BrowserFrame
-              className="hero-work__secondary"
-              {...projectImages.martha}
-              sizes="(max-width: 390px) 78vw, (max-width: 600px) 73vw, (max-width: 900px) 320px, 285px"
-              alt="Página principal del portfolio web desarrollado para la diseñadora Martha García"
-              title="Martha García · Portfolio"
-              url="portfolio-martha.vercel.app"
-              variant="compact"
-              loading="eager"
-            />
-
-            <BrowserFrame
-              className="hero-work__tertiary"
-              {...projectImages.inredWork}
-              sizes="(max-width: 390px) 78vw, (max-width: 600px) 73vw, (max-width: 900px) 320px, 285px"
-              alt="Galería de trabajos del sitio corporativo desarrollado para Inredtelecom"
-              title="Inredtelecom · Sitio corporativo"
-              url="inredtelecom.vercel.app"
-              variant="compact"
-              loading="eager"
+              decoding="async"
             />
           </div>
-        </div>
+
+          <figcaption className="hero-profile__caption">
+            <p className="hero-profile__name">Alejandro Castañeda</p>
+            <p className="hero-profile__role">
+              Desarrollador web freelance · Aguascalientes
+            </p>
+            <p className="hero-profile__statement">
+              Trabajo directamente contigo para crear una web clara,
+              profesional y adaptada a tu negocio.
+            </p>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

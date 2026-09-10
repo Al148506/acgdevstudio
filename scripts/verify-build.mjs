@@ -13,7 +13,9 @@ const graph = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S
 assert.deepEqual(graph['@graph'].map((entity) => entity['@type']), ['Organization', 'WebSite']);
 assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
 assert.match(html, /Tu negocio merece una web a su altura/);
-assert.match(html, /Creo sitios web profesionales/);
+assert.match(html, /Creo sitios web claros y profesionales/);
+assert.match(html, /Alejandro Castañeda/);
+assert.match(html, /Desarrollador web freelance · Aguascalientes/);
 for (const id of ['home', 'portfolio', 'process', 'demo', 'faq', 'contact']) {
   assert.equal((html.match(new RegExp(`id="${id}"`, 'g')) ?? []).length, 1, `section ${id}`);
 }

@@ -140,6 +140,36 @@
     "size": 48824
   },
   {
+    "asset": "alejandro-400.webp",
+    "format": "webp",
+    "width": 400,
+    "height": 402,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 16168
+  },
+  {
+    "asset": "alejandro-640.webp",
+    "format": "webp",
+    "width": 640,
+    "height": 643,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 34934
+  },
+  {
+    "asset": "alejandro-960.webp",
+    "format": "webp",
+    "width": 960,
+    "height": 964,
+    "channels": 4,
+    "premultiplied": true,
+    "hasAlpha": true,
+    "size": 61180
+  },
+  {
     "asset": "logo-nav-64.webp",
     "format": "webp",
     "width": 64,
