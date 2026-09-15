@@ -47,30 +47,32 @@ function Hero() {
             <span>ATENCIÓN DIRECTA</span>
           </div>
 
-          <div className="hero-profile__portrait">
-            <img
-              src={alejandro640}
-              srcSet={`${alejandro400} 400w, ${alejandro640} 640w, ${alejandro960} 960w`}
-              sizes="(max-width: 600px) calc(100vw - 48px), (max-width: 900px) 430px, 464px"
-              width="1024"
-              height="1028"
-              fetchPriority="high"
-              alt="Retrato profesional de Alejandro Castañeda, desarrollador web de ACGDevStudio"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
+          <div className="hero-profile__card">
+            <div className="hero-profile__portrait">
+              <img
+                src={alejandro640}
+                srcSet={`${alejandro400} 400w, ${alejandro640} 640w, ${alejandro960} 960w`}
+                sizes="(max-width: 600px) calc(100vw - 48px), (max-width: 900px) 430px, 464px"
+                width="1024"
+                height="1028"
+                fetchPriority="high"
+                alt="Retrato profesional de Alejandro Castañeda, desarrollador web de ACGDevStudio"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
 
-          <figcaption className="hero-profile__caption">
-            <p className="hero-profile__name">Alejandro Castañeda</p>
-            <p className="hero-profile__role">
-              Desarrollador web freelance · Aguascalientes
-            </p>
-            <p className="hero-profile__statement">
-              Trabajo directamente contigo para crear una web clara,
-              profesional y adaptada a tu negocio.
-            </p>
-          </figcaption>
+            <figcaption className="hero-profile__caption">
+              <p className="hero-profile__name">Alejandro Castañeda</p>
+              <p className="hero-profile__role">
+                Desarrollador web freelance · Aguascalientes
+              </p>
+              <p className="hero-profile__statement">
+                Trabajo directamente contigo para crear una web clara,
+                profesional y adaptada a tu negocio.
+              </p>
+            </figcaption>
+          </div>
         </figure>
       </div>
     </section>
