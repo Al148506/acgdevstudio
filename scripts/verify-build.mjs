@@ -19,10 +19,10 @@ assert.match(html, /Desarrollador web freelance · Aguascalientes/);
 for (const id of ['home', 'portfolio', 'process', 'demo', 'faq', 'contact']) {
   assert.equal((html.match(new RegExp(`id="${id}"`, 'g')) ?? []).length, 1, `section ${id}`);
 }
-for (const title of ['Inredtelecom', 'Martha García', 'La Chiluda Seafood']) assert.ok(html.includes(title));
+for (const title of ['Inredtelecom', 'Martha García', 'La Chiluda Seafood', 'Peluditos']) assert.ok(html.includes(title));
 const articles = html.match(/<article\b[^>]*>/g) ?? [];
-assert.equal(articles.length, 3);
-assert.equal(articles.filter((tag) => tag.includes('hidden=""') && tag.includes('inert=""')).length, 2);
+assert.equal(articles.length, 4);
+assert.equal(articles.filter((tag) => tag.includes('hidden=""') && tag.includes('inert=""')).length, 3);
 assert.equal((html.match(/class="faq-question"/g) ?? []).length, 8);
 assert.match(html, /<form\b[^>]*method="post"/);
 assert.match(html, /Solicitar propuesta visual/);
@@ -50,4 +50,4 @@ assert.match(robots, /Allow: \/[\r\n]/);
 assert.match(robots, /Sitemap: https:\/\/www\.acg-devstudio\.com\/sitemap\.xml/);
 const sitemap = await readFile(new URL('sitemap.xml', output), 'utf8');
 assert.deepEqual([...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]), ['https://www.acg-devstudio.com/']);
-console.log('Static HTML verified: SEO, 6 sections, 3 projects, 8 FAQs, form, anchors and assets.');
+console.log('Static HTML verified: SEO, 6 sections, 4 projects, 8 FAQs, form, anchors and assets.');

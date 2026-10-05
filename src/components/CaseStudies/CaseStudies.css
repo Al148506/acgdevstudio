@@ -136,6 +136,15 @@
   gap: 0.65rem;
 }
 
+.cases-carousel__position {
+  display: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
 .cases-carousel__dot {
   width: 2.75rem;
   min-height: 2.75rem;
@@ -228,13 +237,37 @@
   min-width: 0;
 }
 
+.case-intro__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.65rem;
+}
+
 .case-type {
-  margin: 0 0 0.65rem;
+  margin: 0;
   color: var(--color-cyan-functional);
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.case-category {
+  padding: 0.28rem 0.55rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 999px;
+  color: var(--color-text);
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.case-category--demo {
+  border-color: rgba(255, 154, 114, 0.38);
+  color: var(--color-warm);
 }
 
 .case-intro h3 {
@@ -407,7 +440,11 @@
     gap: 0 2.5rem;
   }
 
-  .case-visual-link,
+  .case-visual-link {
+    position: relative;
+    top: auto;
+  }
+
   .case-visual-wrapper {
     position: static;
   }
@@ -439,6 +476,14 @@
 
   .cases-carousel__controls {
     gap: 0.35rem;
+  }
+
+  .cases-carousel__dots {
+    display: none;
+  }
+
+  .cases-carousel__position {
+    display: inline;
   }
 
   .cases-carousel__arrow {

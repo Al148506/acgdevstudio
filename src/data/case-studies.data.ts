@@ -4,6 +4,7 @@ export interface CaseStudy {
   id: string;
   title: string;
   projectType: string;
+  category: "client" | "demo";
   context: string;
   image: ResponsiveImage;
   imageAlt: string;
@@ -22,17 +23,18 @@ export const caseStudies: CaseStudy[] = [
     id: "inredtelecom",
     title: "Inredtelecom",
     projectType: "Sitio web corporativo",
+    category: "client",
     context:
-      "Una presencia digital para explicar los servicios de la empresa y reunir su trabajo en un solo lugar.",
+      "Un sitio para presentar servicios y trabajos de telecomunicaciones en un solo lugar.",
     image: projectImages.inredHome,
     imageAlt:
       "Página del sitio corporativo de Inredtelecom con información de la empresa, sus valores y servicios",
     frameTitle: "Inredtelecom · Sitio corporativo",
     frameUrl: "inredtelecom.vercel.app",
     problem:
-      "La empresa necesitaba presentar con claridad su experiencia en telecomunicaciones, sus servicios y los proyectos realizados.",
+      "La empresa necesitaba mostrar su experiencia, servicios y proyectos con claridad.",
     solution:
-      "Se organizó el contenido en una navegación directa y una identidad visual sobria, pensada para facilitar la consulta y el contacto.",
+      "Se organizó la información con una navegación directa y accesos claros al contacto.",
     delivery: [
       "Presentación de servicios",
       "Galería de trabajos",
@@ -44,17 +46,18 @@ export const caseStudies: CaseStudy[] = [
     id: "martha-garcia-portfolio",
     title: "Martha García",
     projectType: "Portfolio profesional",
+    category: "client",
     context:
-      "Un sitio propio para presentar su perfil como diseñadora y dar protagonismo a su trabajo creativo.",
+      "Un portfolio propio para mostrar su trabajo y facilitar el contacto con posibles clientes.",
     image: projectImages.martha,
     imageAlt:
       "Página principal del portfolio de Martha García con su propuesta como diseñadora gráfica y accesos al portfolio y contacto",
     frameTitle: "Martha García · Portfolio",
     frameUrl: "portfolio-martha.vercel.app",
     problem:
-      "Martha necesitaba reunir su identidad, servicios y proyectos en una presentación profesional fácil de compartir con posibles clientes.",
+      "Martha necesitaba reunir su perfil, servicios y proyectos en un sitio fácil de compartir.",
     solution:
-      "Se diseñó un portfolio visual alineado con su marca, con una lectura clara y recorridos directos hacia sus trabajos y formas de contacto.",
+      "Se diseñó un recorrido visual alineado con su marca, con acceso directo a sus trabajos y al contacto.",
     delivery: [
       "Portfolio visual por categorías",
       "Presentación de servicios",
@@ -65,25 +68,49 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "la-chiluda-demo",
     title: "La Chiluda Seafood & Bar",
-    projectType: "Demo comercial · Concepto para restaurante",
+    projectType: "Concepto para restaurante",
+    category: "demo",
     context:
-      "Una demostración de cómo un restaurante puede presentar su ambiente, sus platillos y la información necesaria antes de una visita.",
+      "Una demo para mostrar platillos, menú, sucursales y formas de consulta desde la web.",
     image: projectImages.chiluda,
     imageAlt:
       "Página principal de la demo para La Chiluda Seafood & Bar con fotografía de platillos, acceso al menú y reserva por WhatsApp",
     frameTitle: "La Chiluda · Concepto para restaurante",
     frameUrl: "la-chiluda-premiere.vercel.app",
     frameStatus: "Demo comercial",
-    
+    disclosure: "Concepto comercial de ACGDevStudio; no fue un encargo del restaurante.",
     problem:
-      "Un restaurante necesita mostrar su propuesta, menú y ubicaciones de forma atractiva para que las personas puedan conocerlo antes de acudir.",
+      "Un restaurante necesita dar a conocer su propuesta, menú y ubicaciones antes de una visita.",
     solution:
-      "Se creó una experiencia responsive con secciones del restaurante, galería, sucursales y accesos directos para consultas por WhatsApp.",
+      "Se preparó una demo responsive con galería, sucursales y accesos a WhatsApp.",
     delivery: [
       "Platillos, galería y sucursales",
       "Menú dinámico de demostración",
       "Pedidos y consultas por WhatsApp",
     ],
     liveUrl: "https://la-chiluda-premiere.vercel.app/",
+  },
+  {
+    id: "peluditos-estetica-canina",
+    title: "Peluditos · Estética Canina",
+    projectType: "Landing page para negocio local",
+    category: "client",
+    context:
+      "Una landing page para una estética canina que presenta sus servicios y facilita el contacto por WhatsApp.",
+    image: projectImages.peluditos,
+    imageAlt:
+      "Página principal de Peluditos Estética Canina con la sección hero, el perro dorado y los botones de acción",
+    frameTitle: "Peluditos · Estética Canina",
+    frameUrl: "peluditos-demo.vercel.app",
+    problem:
+      "La estética necesitaba una presencia digital clara que mostrara sus servicios y permitiera agendar citas fácilmente.",
+    solution:
+      "Se desarrolló una landing page responsive con secciones de servicios, antes/después, testimonios, ubicación y CTA directo a WhatsApp.",
+    delivery: [
+      "Presentación de servicios",
+      "Galería antes/después y testimonios",
+      "Ubicación y contacto por WhatsApp",
+    ],
+    liveUrl: "https://peluditos-demo.vercel.app/",
   },
 ];

@@ -5,6 +5,7 @@ import moviessystem from "../images/Movies.png";
 import inredtelecom from "../images/Inredtelecom/01HomePage.png";
 import landingPageMartha from "../images/LandingPageMartha/01HomePage.png";
 import pomodoroSempai from "../images/Pomodoro.png";
+import esteticaCanina from "../images/Estetica-Canina-Demo/01-Hero.png";
 import { importProjectImages } from "../helper/importProjectImages";
 import type { Project } from "../components/Projects/types";
 
@@ -77,6 +78,16 @@ export const projects: Project[] = [
     gallery: importProjectImages("PomodoroSempai"),
     githubUrl: "https://github.com/Al148506/kawaii-task-planner",
     liveUrl: "https://kawaii-task-planner.vercel.app/",
+    technologies: ["React", "Typescript", "Vite", "Vercel"],
+  },
+  {
+    id: "peluditos-estetica-canina",
+    titleKey: "projectsSection.peluditos.title",
+    descriptionKey: "projectsSection.peluditos.description",
+    image: esteticaCanina,
+    gallery: importProjectImages("Estetica-Canina-Demo"),
+    githubUrl: "",
+    liveUrl: "https://peluditos-demo.vercel.app/",
     technologies: ["React", "Typescript", "Vite", "Vercel"],
   },
 ];

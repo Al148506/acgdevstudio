@@ -120,6 +120,13 @@
       "challenges": "Developing a feature-rich single-page application with multiple interconnected contexts, implementing a progression system with levels, achievements, and unlockable content, managing persistent client-side data, and designing a cohesive kawaii-themed user interface that remains intuitive and responsive across devices.",
       "learning": "Gained hands-on experience in designing scalable frontend architectures, managing complex application state with React Context and reducers, implementing gamification systems, optimizing user experience, and deploying production-ready applications with Firebase Hosting."
     },
+    "peluditos": {
+      "title": "Peluditos · Dog Grooming",
+      "description": "Responsive landing page for a dog grooming salon featuring services, before/after gallery, testimonials, and WhatsApp CTA.",
+      "objective": "Design and develop a modern, responsive landing page for a dog grooming business that showcases services, displays before/after transformations, highlights reasons to choose the salon, collects client testimonials, and provides a direct WhatsApp contact channel for booking appointments.",
+      "challenges": "Creating a warm and professional visual identity that communicates trust and care for pets. Structuring the sections (hero, services, testimonials, before/after gallery, location) to naturally guide users toward conversion. Ensuring a visually consistent experience across mobile and desktop devices.",
+      "learning": "Reinforced skills in designing conversion-oriented interfaces, organizing content in local service landing pages, integrating WhatsApp as a contact channel, and building responsive experiences with modern React and CSS."
+    },
     "modalLabels": {
       "objective": "Objective",
       "technologies": "Technologies",

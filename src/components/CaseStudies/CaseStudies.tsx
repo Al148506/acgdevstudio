@@ -112,7 +112,7 @@ export const CaseStudies = () => {
             aria-live="polite"
             aria-atomic="true"
           >
-            Mostrando {activeProject.title}
+            Mostrando {activeProject.title}, proyecto {activeIndex + 1} de {caseStudies.length}
           </p>
 
           <div
@@ -151,7 +151,12 @@ export const CaseStudies = () => {
                   aria-hidden={!isActive}
                 >
                   <header className="case-intro">
-                    <p className="case-type">{project.projectType}</p>
+                    <div className="case-intro__meta">
+                      <p className="case-type">{project.projectType}</p>
+                      <span className={`case-category case-category--${project.category}`}>
+                        {project.category === "demo" ? "Demo comercial" : "Proyecto para cliente"}
+                      </span>
+                    </div>
                     <h3 id={`${project.id}-title`}>{project.title}</h3>
                     <p className="case-context">{project.context}</p>
                     {project.disclosure && (
@@ -237,6 +242,10 @@ export const CaseStudies = () => {
                   />
                 ))}
               </div>
+
+              <span className="cases-carousel__position" aria-hidden="true">
+                {activeIndex + 1} / {caseStudies.length}
+              </span>
 
               <button
                 type="button"

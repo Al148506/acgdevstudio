@@ -12,6 +12,7 @@ import inred960 from '../images/optimized/inred-home-960.webp';
 import inred1339 from '../images/optimized/inred-home-1339.webp';
 import work400 from '../images/optimized/inred-work-400.webp';
 import work682 from '../images/optimized/inred-work-682.webp';
+import peluditos from '../images/Estetica-Canina-Demo/01-Hero.png';
 
 export interface ResponsiveImage {
   src: string;
@@ -40,5 +41,10 @@ export const projectImages = {
     src: work682,
     srcSet: `${work400} 400w, ${work682} 682w`,
     width: 682, height: 485,
+  },
+  peluditos: {
+    src: peluditos,
+    srcSet: `${peluditos} 1024w`,
+    width: 1024, height: 576,
   },
 } satisfies Record<string, ResponsiveImage>;

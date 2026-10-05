@@ -5,6 +5,7 @@ import moviessystem from "../images/Movies.png";
 import inredtelecom from "../images/Inredtelecom/01HomePage.png"
 import landingPageMartha from "../images/LandingPageMartha/01HomePage.png";
 import pomodoroSempai from "../images/Pomodoro.png";
+import esteticaCanina from "../images/Estetica-Canina-Demo/01-Hero.png";
 export interface ProjectModalData {
   id: string;
   titleKey: string;
@@ -125,5 +126,20 @@ export const projectsModalData: ProjectModalData[] = [
 
     challengesKey: "projectsSection.kawaii-task-planner.challenges",
     learningKey: "projectsSection.kawaii-task-planner.learning",
+  },
+  {
+    id: "peluditos-estetica-canina",
+    titleKey: "projectsSection.peluditos.title",
+    image: esteticaCanina,
+    objectiveKey: "projectsSection.peluditos.objective",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "CSS Modules",
+      "Vercel",
+    ],
+    challengesKey: "projectsSection.peluditos.challenges",
+    learningKey: "projectsSection.peluditos.learning",
   }
 ];

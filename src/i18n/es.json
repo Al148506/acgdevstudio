@@ -120,6 +120,13 @@
       "challenges": "Diseñar una arquitectura escalable basada en React Context para coordinar múltiples módulos (tareas, temporizador, progresión RPG, sesiones y asistentes virtuales), implementar persistencia local sin backend y crear una experiencia visual atractiva manteniendo un rendimiento óptimo.",
       "learning": "Se fortalecieron habilidades en React, TypeScript, arquitectura frontend modular, gestión compleja de estado, patrones de gamificación, experiencia de usuario, diseño responsivo y despliegue de aplicaciones modernas utilizando Firebase Hosting."
     },
+    "peluditos": {
+      "title": "Peluditos · Estética Canina",
+      "description": "Landing page responsive para una estética canina con servicios, galería antes/después, testimonios y CTA de WhatsApp.",
+      "objective": "Diseñar y desarrollar una landing page moderna y responsiva para una estética canina que permita presentar sus servicios, mostrar transformaciones antes/después, destacar las razones para elegir el negocio, recopilar testimonios de clientes y ofrecer un canal directo de contacto vía WhatsApp para agendar citas.",
+      "challenges": "Crear una identidad visual cálida y profesional que transmita confianza y cuidado hacia las mascotas. Estructurar las secciones (hero, servicios, testimonios, galería antes/después, ubicación) de forma que guíen al usuario naturalmente hacia la conversión. Garantizar una experiencia visual consistente en dispositivos móviles y de escritorio.",
+      "learning": "Se reforzaron habilidades en el diseño de interfaces orientadas a conversión, la organización de contenido en landing pages de servicios locales, la integración de WhatsApp como canal de contacto y la construcción de experiencias responsivas con React y CSS moderno."
+    },
     "modalLabels": {
       "objective": "Objetivo",
       "technologies": "Tecnologías",
